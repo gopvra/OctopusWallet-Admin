@@ -13,6 +13,9 @@ api.interceptors.request.use((config) => {
   return config
 })
 
+// Shared promise to prevent concurrent refresh requests
+let refreshPromise: Promise<any> | null = null
+
 api.interceptors.response.use(
   (res) => res,
   async (error) => {
@@ -21,9 +24,15 @@ api.interceptors.response.use(
       if (refreshToken && !error.config._retry) {
         error.config._retry = true
         try {
-          const res = await axios.post('/api/admin/v1/auth/refresh', {
-            refresh_token: refreshToken,
-          })
+          if (!refreshPromise) {
+            refreshPromise = axios
+              .post('/api/admin/v1/auth/refresh', { refresh_token: refreshToken })
+              .finally(() => { refreshPromise = null })
+          }
+          const res = await refreshPromise
+          if (!res.data?.access_token || !res.data?.refresh_token) {
+            throw new Error('invalid refresh response')
+          }
           localStorage.setItem('access_token', res.data.access_token)
           localStorage.setItem('refresh_token', res.data.refresh_token)
           error.config.headers.Authorization = `Bearer ${res.data.access_token}`

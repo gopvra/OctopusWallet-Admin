@@ -6,9 +6,13 @@ export function AddressDisplay({ address, chars = 6 }: { address: string; chars?
   const [copied, setCopied] = useState(false)
 
   const copy = async () => {
-    await navigator.clipboard.writeText(address)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    try {
+      await navigator.clipboard.writeText(address)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      // Clipboard API not available or permission denied
+    }
   }
 
   return (

@@ -7,6 +7,10 @@ import {
   Wallet,
   Link2,
   Settings,
+  RotateCcw,
+  Layers,
+  PiggyBank,
+  Coins,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -15,7 +19,11 @@ const navItems = [
   { to: '/merchants', icon: Users, label: 'Merchants' },
   { to: '/payments', icon: CreditCard, label: 'Payments' },
   { to: '/payouts', icon: ArrowUpRight, label: 'Payouts' },
+  { to: '/refunds', icon: RotateCcw, label: 'Refunds' },
+  { to: '/batch-payouts', icon: Layers, label: 'Batch Payouts' },
   { to: '/wallets', icon: Wallet, label: 'Wallets' },
+  { to: '/balances', icon: PiggyBank, label: 'Balances' },
+  { to: '/currencies', icon: Coins, label: 'Currencies' },
   { to: '/chain-status', icon: Link2, label: 'Chain Status' },
   { to: '/settings', icon: Settings, label: 'Settings' },
 ]

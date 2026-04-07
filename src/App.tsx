@@ -9,7 +9,13 @@ import PaymentListPage from '@/pages/payments/list'
 import PaymentDetailPage from '@/pages/payments/detail'
 import PayoutListPage from '@/pages/payouts/list'
 import PayoutDetailPage from '@/pages/payouts/detail'
+import RefundListPage from '@/pages/refunds/list'
+import RefundDetailPage from '@/pages/refunds/detail'
+import BatchPayoutListPage from '@/pages/batch-payouts/list'
+import BatchPayoutDetailPage from '@/pages/batch-payouts/detail'
 import WalletsPage from '@/pages/wallets'
+import BalancesPage from '@/pages/balances'
+import CurrenciesPage from '@/pages/currencies'
 import ChainStatusPage from '@/pages/chain-status'
 import SettingsPage from '@/pages/settings'
 
@@ -37,7 +43,13 @@ export default function App() {
             <Route path="/payments/:id" element={<PaymentDetailPage />} />
             <Route path="/payouts" element={<PayoutListPage />} />
             <Route path="/payouts/:id" element={<PayoutDetailPage />} />
+            <Route path="/refunds" element={<RefundListPage />} />
+            <Route path="/refunds/:id" element={<RefundDetailPage />} />
+            <Route path="/batch-payouts" element={<BatchPayoutListPage />} />
+            <Route path="/batch-payouts/:id" element={<BatchPayoutDetailPage />} />
             <Route path="/wallets" element={<WalletsPage />} />
+            <Route path="/balances" element={<BalancesPage />} />
+            <Route path="/currencies" element={<CurrenciesPage />} />
             <Route path="/chain-status" element={<ChainStatusPage />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Route>

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="550" viewBox="0 0 800 550">
+  <defs>
+    <!-- Gradient for top-left blur circle -->
+    <radialGradient id="glow1" cx="0.3" cy="0.3" r="0.5">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#7c3aed" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Gradient for bottom-right blur circle -->
+    <radialGradient id="glow2" cx="0.7" cy="0.7" r="0.5">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#22d3ee" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Button gradient -->
+    <linearGradient id="btnGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <!-- Logo gradient -->
+    <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <!-- Card border glow -->
+    <linearGradient id="cardBorder" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.3"/>
+    </linearGradient>
+    <!-- Card glow shadow -->
+    <filter id="cardGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <!-- Full dark background -->
+  <rect width="800" height="550" fill="#020617"/>
+
+  <!-- Blurred gradient circle top-left -->
+  <ellipse cx="180" cy="100" rx="280" ry="250" fill="url(#glow1)"/>
+
+  <!-- Blurred gradient circle bottom-right -->
+  <ellipse cx="650" cy="460" rx="300" ry="260" fill="url(#glow2)"/>
+
+  <!-- Card outer glow -->
+  <rect x="210" y="60" width="380" height="430" rx="16" ry="16" fill="#818cf8" opacity="0.07" filter="url(#cardGlow)"/>
+
+  <!-- Card background (glassmorphism simulated) -->
+  <rect x="210" y="60" width="380" height="430" rx="16" ry="16" fill="#0f172a" fill-opacity="0.75" stroke="url(#cardBorder)" stroke-width="1"/>
+
+  <!-- Logo circle -->
+  <circle cx="400" cy="130" r="32" fill="url(#logoGrad)" opacity="0.9"/>
+
+  <!-- Globe/octopus simplified icon -->
+  <!-- Horizontal line -->
+  <ellipse cx="400" cy="130" rx="20" ry="20" fill="none" stroke="#020617" stroke-width="1.5" opacity="0.7"/>
+  <line x1="380" y1="130" x2="420" y2="130" stroke="#020617" stroke-width="1.2" opacity="0.6"/>
+  <!-- Vertical ellipse -->
+  <ellipse cx="400" cy="130" rx="10" ry="20" fill="none" stroke="#020617" stroke-width="1.2" opacity="0.6"/>
+  <!-- Horizontal latitude lines -->
+  <ellipse cx="400" cy="122" rx="17" ry="3" fill="none" stroke="#020617" stroke-width="1" opacity="0.4"/>
+  <ellipse cx="400" cy="138" rx="17" ry="3" fill="none" stroke="#020617" stroke-width="1" opacity="0.4"/>
+  <!-- Small tentacle accents at bottom of globe -->
+  <path d="M388 148 Q384 158 380 162" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <path d="M394 150 Q392 160 390 166" fill="none" stroke="#a5b4fc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M406 150 Q408 160 410 166" fill="none" stroke="#a5b4fc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M412 148 Q416 158 420 162" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Title: OctopusWallet -->
+  <text x="400" y="192" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="0.5">OctopusWallet</text>
+
+  <!-- Subtitle: Admin Panel -->
+  <text x="400" y="214" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#94a3b8" letter-spacing="1">Admin Panel</text>
+
+  <!-- Username label -->
+  <text x="250" y="255" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#94a3b8">Username</text>
+
+  <!-- Username input field -->
+  <rect x="250" y="262" width="300" height="42" rx="8" ry="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <!-- Placeholder text -->
+  <text x="266" y="288" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#475569">Enter your username</text>
+  <!-- User icon -->
+  <circle cx="534" cy="283" r="5" fill="none" stroke="#475569" stroke-width="1.2"/>
+  <path d="M528 293 Q531 289 534 289 Q537 289 540 293" fill="none" stroke="#475569" stroke-width="1.2"/>
+
+  <!-- Password label -->
+  <text x="250" y="325" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#94a3b8">Password</text>
+
+  <!-- Password input field -->
+  <rect x="250" y="332" width="300" height="42" rx="8" ry="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <!-- Placeholder dots -->
+  <text x="266" y="358" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#475569">Enter your password</text>
+  <!-- Lock icon -->
+  <rect x="530" y="351" rx="2" ry="2" width="10" height="8" fill="none" stroke="#475569" stroke-width="1.2"/>
+  <path d="M532 351 L532 347 Q532 343 535 343 Q538 343 538 347 L538 351" fill="none" stroke="#475569" stroke-width="1.2"/>
+
+  <!-- Sign In button -->
+  <rect x="250" y="400" width="300" height="44" rx="8" ry="8" fill="url(#btnGrad)"/>
+  <text x="400" y="427" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="15" font-weight="600" fill="#ffffff">Sign In</text>
+
+  <!-- Footer text -->
+  <text x="400" y="470" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#475569">Secured with end-to-end encryption</text>
+</svg>
