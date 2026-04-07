@@ -106,12 +106,13 @@ export default function SettingsPage() {
                 />
                 <input
                   type="password"
-                  placeholder="Password (min 6 chars)"
+                  placeholder="Password (min 12 chars)"
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
                   className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                   required
-                  minLength={6}
+                  minLength={12}
+                  maxLength={128}
                 />
                 <select
                   value={form.role}
