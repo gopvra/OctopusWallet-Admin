@@ -106,6 +106,70 @@ export interface RecentActivity {
   created_at: string
 }
 
+export interface Refund {
+  id: string
+  payment_id: string
+  merchant_id: string
+  chain: string
+  token: string
+  to_address: string
+  amount: string
+  status: string
+  tx_hash?: string
+  reason: string
+  error_message?: string
+  created_at: string
+  updated_at: string
+}
+
+export interface BatchPayout {
+  id: string
+  merchant_id: string
+  chain: string
+  token: string
+  total_amount: string
+  total_count: number
+  completed_count: number
+  failed_count: number
+  status: string
+  created_at: string
+  updated_at: string
+}
+
+export interface BatchPayoutItem {
+  id: string
+  batch_id: string
+  payout_id?: string
+  to_address: string
+  amount: string
+  status: string
+  error_message?: string
+  created_at: string
+}
+
+export interface MerchantBalance {
+  id: string
+  merchant_id: string
+  chain: string
+  token: string
+  available: string
+  pending: string
+  updated_at: string
+}
+
+export interface SupportedCurrency {
+  id: string
+  chain: string
+  symbol: string
+  name: string
+  token_address: string
+  decimals: number
+  is_native: boolean
+  is_active: boolean
+  min_amount: string
+  created_at: string
+}
+
 export interface TokenPair {
   access_token: string
   refresh_token: string
