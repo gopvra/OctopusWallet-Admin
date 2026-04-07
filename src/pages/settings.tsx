@@ -106,12 +106,13 @@ export default function SettingsPage() {
                 />
                 <input
                   type="password"
-                  placeholder="Password (min 6 chars)"
+                  placeholder="Password (min 12 chars)"
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
                   className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                   required
-                  minLength={6}
+                  minLength={12}
+                  maxLength={128}
                 />
                 <select
                   value={form.role}
@@ -169,7 +170,11 @@ export default function SettingsPage() {
                     <td className="py-2.5 px-3">
                       {au.id !== user?.id && (
                         <button
-                          onClick={() => deleteUser.mutate(au.id)}
+                          onClick={() => {
+                            if (window.confirm(`Delete admin user "${au.username}"? This cannot be undone.`)) {
+                              deleteUser.mutate(au.id)
+                            }
+                          }}
                           className="p-1.5 rounded-lg hover:bg-red-500/10 text-muted-foreground hover:text-red-400 transition-colors"
                         >
                           <Trash2 className="w-4 h-4" />
