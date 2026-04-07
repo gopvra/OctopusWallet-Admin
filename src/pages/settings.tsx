@@ -170,7 +170,11 @@ export default function SettingsPage() {
                     <td className="py-2.5 px-3">
                       {au.id !== user?.id && (
                         <button
-                          onClick={() => deleteUser.mutate(au.id)}
+                          onClick={() => {
+                            if (window.confirm(`Delete admin user "${au.username}"? This cannot be undone.`)) {
+                              deleteUser.mutate(au.id)
+                            }
+                          }}
                           className="p-1.5 rounded-lg hover:bg-red-500/10 text-muted-foreground hover:text-red-400 transition-colors"
                         >
                           <Trash2 className="w-4 h-4" />
