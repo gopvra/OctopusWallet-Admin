@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '@/hooks/use-auth'
-import { Loader2, Eye, EyeOff, AlertCircle } from 'lucide-react'
+import { useWebAuthnLogin } from '@/hooks/use-webauthn'
+import { Loader2, Eye, EyeOff, AlertCircle, Fingerprint } from 'lucide-react'
 
 export default function LoginPage() {
   const { t } = useTranslation(['auth', 'common'])
@@ -12,6 +13,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const { login } = useAuth()
+  const { login: passkeyLogin, loading: passkeyLoading } = useWebAuthnLogin()
   const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -25,6 +27,20 @@ export default function LoginPage() {
       setError(t('auth:invalidCredentials'))
     } finally {
       setLoading(false)
+    }
+  }
+
+  const handlePasskeyLogin = async () => {
+    if (!username) {
+      setError(t('auth:usernameRequired'))
+      return
+    }
+    setError('')
+    try {
+      await passkeyLogin(username)
+      navigate('/')
+    } catch {
+      setError(t('auth:passkeyFailed'))
     }
   }
 
@@ -100,6 +116,28 @@ export default function LoginPage() {
               {loading ? t('auth:loggingIn') : t('auth:signIn')}
             </button>
           </form>
+
+          {/* Divider */}
+          <div className="flex items-center gap-3 my-5">
+            <div className="flex-1 h-px bg-white/10" />
+            <span className="text-xs text-muted-foreground">{t('auth:orPasskey')}</span>
+            <div className="flex-1 h-px bg-white/10" />
+          </div>
+
+          {/* Passkey / Biometric Login */}
+          <button
+            type="button"
+            onClick={handlePasskeyLogin}
+            disabled={passkeyLoading}
+            className="w-full py-2.5 rounded-lg bg-secondary hover:bg-secondary/80 border border-white/10 text-foreground font-medium transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+          >
+            {passkeyLoading ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <Fingerprint className="w-5 h-5 text-accent" />
+            )}
+            {t('auth:passkeyLogin')}
+          </button>
         </div>
       </div>
     </div>
