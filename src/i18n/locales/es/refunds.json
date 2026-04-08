@@ -1,0 +1,46 @@
+{
+  "list": {
+    "title": "Reembolsos",
+    "searchPlaceholder": "Buscar...",
+    "columns": {
+      "chain": "Cadena",
+      "toAddress": "Dirección de Destino",
+      "amount": "Monto",
+      "reason": "Motivo",
+      "status": "Estado",
+      "created": "Creado"
+    },
+    "statusOptions": {
+      "all": "Todos los Estados",
+      "pending": "Pendiente",
+      "processing": "Procesando",
+      "completed": "Completado",
+      "failed": "Fallido"
+    },
+    "chainOptions": {
+      "all": "Todas las Cadenas",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "Detalle de Reembolso",
+    "notFound": "Reembolso no encontrado",
+    "fields": {
+      "id": "ID",
+      "paymentId": "ID de Pago",
+      "merchantId": "ID de Comerciante",
+      "chain": "Cadena",
+      "token": "Token",
+      "toAddress": "Dirección de Destino",
+      "amount": "Monto",
+      "status": "Estado",
+      "reason": "Motivo",
+      "txHash": "Hash de TX",
+      "error": "Error",
+      "created": "Creado"
+    }
+  }
+}

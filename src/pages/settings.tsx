@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'sonner'
 import api from '@/api/client'
 import { useAuth } from '@/hooks/use-auth'
 import type { AdminUser } from '@/types'
@@ -29,12 +30,22 @@ export default function SettingsPage() {
       queryClient.invalidateQueries({ queryKey: ['admin-users'] })
       setShowCreate(false)
       setForm({ username: '', email: '', password: '', role: 'admin' })
+      toast.success(t('settings:adminUsers.createSuccess'))
+    },
+    onError: () => {
+      toast.error(t('common:error'))
     },
   })
 
   const deleteUser = useMutation({
     mutationFn: async (id: string) => api.delete(`/admin-users/${id}`),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['admin-users'] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['admin-users'] })
+      toast.success(t('settings:adminUsers.deleteSuccess'))
+    },
+    onError: () => {
+      toast.error(t('common:error'))
+    },
   })
 
   const handleCreate = async (e: React.FormEvent) => {

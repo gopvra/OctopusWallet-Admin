@@ -1,7 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from 'sonner'
 import { AppLayout } from '@/components/layout/app-layout'
 import LoginPage from '@/pages/login'
+import NotFoundPage from '@/pages/not-found'
 import DashboardPage from '@/pages/dashboard'
 import MerchantListPage from '@/pages/merchants/list'
 import MerchantDetailPage from '@/pages/merchants/detail'
@@ -33,6 +35,18 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+        <Toaster
+          position="top-right"
+          richColors
+          theme="dark"
+          toastOptions={{
+            style: {
+              background: '#0f172a',
+              border: '1px solid rgba(255,255,255,0.1)',
+              color: '#f8fafc',
+            },
+          }}
+        />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route element={<AppLayout />}>
@@ -53,7 +67,7 @@ export default function App() {
             <Route path="/chain-status" element={<ChainStatusPage />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Route>
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

@@ -1,0 +1,46 @@
+{
+  "list": {
+    "title": "返金",
+    "searchPlaceholder": "検索...",
+    "columns": {
+      "chain": "チェーン",
+      "toAddress": "送金先アドレス",
+      "amount": "金額",
+      "reason": "理由",
+      "status": "ステータス",
+      "created": "作成日時"
+    },
+    "statusOptions": {
+      "all": "すべてのステータス",
+      "pending": "保留中",
+      "processing": "処理中",
+      "completed": "完了",
+      "failed": "失敗"
+    },
+    "chainOptions": {
+      "all": "すべてのチェーン",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "返金詳細",
+    "notFound": "返金が見つかりません",
+    "fields": {
+      "id": "ID",
+      "paymentId": "決済ID",
+      "merchantId": "加盟店ID",
+      "chain": "チェーン",
+      "token": "トークン",
+      "toAddress": "送金先アドレス",
+      "amount": "金額",
+      "status": "ステータス",
+      "reason": "理由",
+      "txHash": "TXハッシュ",
+      "error": "エラー",
+      "created": "作成日時"
+    }
+  }
+}

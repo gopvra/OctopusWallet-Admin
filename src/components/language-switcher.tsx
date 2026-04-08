@@ -2,8 +2,11 @@ import { useTranslation } from 'react-i18next'
 import { Globe } from 'lucide-react'
 
 const languages = [
-  { code: 'en', label: 'EN' },
+  { code: 'en', label: 'English' },
   { code: 'zh', label: '中文' },
+  { code: 'ja', label: '日本語' },
+  { code: 'ko', label: '한국어' },
+  { code: 'es', label: 'Español' },
 ]
 
 export function LanguageSwitcher() {

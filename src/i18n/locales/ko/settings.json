@@ -1,0 +1,78 @@
+{
+  "title": "설정",
+  "account": {
+    "title": "내 계정",
+    "username": "사용자 이름",
+    "email": "이메일",
+    "role": "역할"
+  },
+  "adminUsers": {
+    "title": "관리자 사용자",
+    "addUser": "사용자 추가",
+    "columns": {
+      "username": "사용자 이름",
+      "email": "이메일",
+      "role": "역할",
+      "created": "생성일",
+      "actions": "작업"
+    },
+    "form": {
+      "usernamePlaceholder": "사용자 이름",
+      "emailPlaceholder": "이메일",
+      "passwordPlaceholder": "비밀번호 (최소 12자)",
+      "roleAdmin": "관리자",
+      "roleSuperAdmin": "최고 관리자",
+      "create": "생성",
+      "cancel": "취소"
+    },
+    "deleteConfirm": "관리자 사용자 \"{{username}}\"을(를) 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    "createSuccess": "관리자 사용자가 성공적으로 생성되었습니다",
+    "deleteSuccess": "관리자 사용자가 성공적으로 삭제되었습니다"
+  },
+  "wallets": {
+    "title": "지갑",
+    "searchPlaceholder": "주소로 검색...",
+    "columns": {
+      "chain": "체인",
+      "address": "주소",
+      "merchant": "가맹점",
+      "index": "인덱스",
+      "created": "생성일"
+    },
+    "chainOptions": {
+      "all": "모든 체인",
+      "bitcoin": "비트코인",
+      "ethereum": "이더리움",
+      "tron": "트론",
+      "solana": "솔라나"
+    }
+  },
+  "balances": {
+    "title": "가맹점 잔액",
+    "columns": {
+      "merchant": "가맹점",
+      "chain": "체인",
+      "token": "토큰",
+      "available": "사용 가능",
+      "pending": "대기 중"
+    },
+    "noData": "잔액 데이터가 없습니다"
+  },
+  "currencies": {
+    "title": "지원 통화",
+    "native": "네이티브",
+    "active": "활성",
+    "inactive": "비활성",
+    "chain": "체인",
+    "decimals": "소수점",
+    "noData": "설정된 통화가 없습니다"
+  },
+  "chainStatus": {
+    "title": "체인 상태",
+    "syncing": "동기화 중",
+    "lastBlock": "마지막 블록",
+    "updated": "수정일",
+    "noData": "체인 상태 데이터가 없습니다",
+    "noDataHint": "모니터가 스캔을 시작하면 체인 상태가 표시됩니다"
+  }
+}

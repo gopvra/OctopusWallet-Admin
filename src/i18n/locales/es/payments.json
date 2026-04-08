@@ -1,0 +1,47 @@
+{
+  "list": {
+    "title": "Pagos",
+    "searchPlaceholder": "Buscar por dirección o ID...",
+    "columns": {
+      "chain": "Cadena",
+      "address": "Dirección",
+      "expected": "Esperado",
+      "received": "Recibido",
+      "status": "Estado",
+      "created": "Creado"
+    },
+    "statusOptions": {
+      "all": "Todos los Estados",
+      "pending": "Pendiente",
+      "confirming": "Confirmando",
+      "completed": "Completado",
+      "expired": "Expirado"
+    },
+    "chainOptions": {
+      "all": "Todas las Cadenas",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "Detalle de Pago",
+    "notFound": "Pago no encontrado",
+    "fields": {
+      "id": "ID",
+      "merchantId": "ID de Comerciante",
+      "chain": "Cadena",
+      "token": "Token",
+      "address": "Dirección",
+      "expected": "Esperado",
+      "received": "Recibido",
+      "status": "Estado",
+      "confirmations": "Confirmaciones",
+      "txHash": "Hash de TX",
+      "expires": "Expira",
+      "created": "Creado",
+      "updated": "Actualizado"
+    }
+  }
+}

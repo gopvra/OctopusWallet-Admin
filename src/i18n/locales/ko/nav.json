@@ -1,0 +1,16 @@
+{
+  "dashboard": "대시보드",
+  "merchants": "가맹점",
+  "payments": "결제",
+  "payouts": "출금",
+  "refunds": "환불",
+  "batchPayouts": "일괄 출금",
+  "wallets": "지갑",
+  "balances": "잔액",
+  "currencies": "통화",
+  "chainStatus": "체인 상태",
+  "settings": "설정",
+  "brand": "Octopus",
+  "adminPanel": "관리자 패널",
+  "version": "OctopusWallet v1.0"
+}

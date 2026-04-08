@@ -1,0 +1,31 @@
+{
+  "list": {
+    "title": "Comerciantes",
+    "searchPlaceholder": "Buscar comerciantes...",
+    "columns": {
+      "name": "Nombre",
+      "email": "Correo Electrónico",
+      "status": "Estado",
+      "created": "Creado",
+      "actions": "Acciones"
+    },
+    "activate": "Activar",
+    "deactivate": "Desactivar"
+  },
+  "detail": {
+    "notFound": "Comerciante no encontrado",
+    "info": "Información del Comerciante",
+    "details": "Detalles",
+    "fields": {
+      "id": "ID",
+      "email": "Correo Electrónico",
+      "webhookUrl": "URL de Webhook",
+      "status": "Estado",
+      "lastUpdated": "Última Actualización",
+      "created": "Creado {{date}}"
+    },
+    "notSet": "No establecido",
+    "active": "Activo",
+    "inactive": "Inactivo"
+  }
+}

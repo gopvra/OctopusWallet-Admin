@@ -1,0 +1,16 @@
+{
+  "dashboard": "Panel de Control",
+  "merchants": "Comerciantes",
+  "payments": "Pagos",
+  "payouts": "Desembolsos",
+  "refunds": "Reembolsos",
+  "batchPayouts": "Desembolsos por Lote",
+  "wallets": "Billeteras",
+  "balances": "Saldos",
+  "currencies": "Monedas",
+  "chainStatus": "Estado de Cadenas",
+  "settings": "Configuración",
+  "brand": "Octopus",
+  "adminPanel": "Panel de Administración",
+  "version": "OctopusWallet v1.0"
+}
