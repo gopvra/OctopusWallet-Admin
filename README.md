@@ -20,6 +20,14 @@
 - **Chain Status** — Monitor blockchain sync state per chain
 - **Admin Users** — Manage admin accounts with role-based access (super_admin)
 - **Dark Sci-Fi Theme** — Professional dark UI with glassmorphism effects
+- **i18n / Multi-language** — 5 languages (English, 中文, 日本語, 한국어, Español) via react-i18next with 9 namespaces, localStorage persistence, and automatic `Accept-Language` header on API calls
+- **Role-Based Access Control (RBAC)** — 3 roles: `super_admin` (full access), `admin` (read-only), `viewer` (dashboard-only)
+- **Toast Notifications** — Non-blocking feedback via Sonner
+- **404 Not Found Page** — Friendly fallback for unmatched routes
+- **Mobile Responsive Sidebar** — Hamburger menu with backdrop overlay for small screens
+- **Global ErrorBoundary** — Catches unhandled React errors with a recovery UI
+- **Password Visibility Toggle** — Show/hide password on the login page
+- **Delete Confirmation Dialogs** — Prevents accidental destructive actions
 
 ## Architecture
 
@@ -31,12 +39,14 @@ The admin system consists of two parts:
 
 | Component | Repository | Tech Stack |
 |-----------|-----------|------------|
-| **Admin API** | [OctopusWallet](https://github.com/gopvra/OctopusWallet) | Go + Gin + JWT + PostgreSQL |
-| **Admin Frontend** | This repo | React 18 + TypeScript + Vite + Tailwind CSS |
+| **Admin API** | [OctopusWallet](https://github.com/gopvra/OctopusWallet) | Go + Gin + JWT + GORM + PostgreSQL + Redis |
+| **Admin Frontend** | This repo | React 18 + TypeScript + Vite + Tailwind CSS + react-i18next |
 
-Both connect to the same PostgreSQL database. The admin API runs alongside the main OctopusWallet server.
+Both connect to the same PostgreSQL database. The admin API runs alongside the main OctopusWallet server. Redis is used for rate limiting and idempotency caching.
 
 ## Tech Stack
+
+### Frontend
 
 | Layer | Technology |
 |-------|-----------|
@@ -48,8 +58,19 @@ Both connect to the same PostgreSQL database. The admin API runs alongside the m
 | Charts | Recharts |
 | Routing | React Router v7 |
 | State | Zustand |
+| Internationalization | i18next + react-i18next |
+| Notifications | Sonner |
 | Icons | Lucide React |
 | HTTP Client | Axios |
+
+### Backend (Admin API in OctopusWallet)
+
+| Layer | Technology |
+|-------|-----------|
+| ORM | GORM |
+| Cache | Redis (rate limiting, idempotency) |
+| Auth | JWT (access + refresh tokens) |
+| Response Format | Unified JSON with error codes |
 
 ## Quick Start
 
@@ -118,7 +139,21 @@ export OCTOPUS_ADMIN_DEFAULT_PASS="your-strong-password"
 
 ## Admin API Endpoints
 
-All endpoints are under `/api/admin/v1`:
+All endpoints are under `/api/admin/v1`.
+
+### Unified Response Format
+
+All API responses follow a consistent envelope:
+
+```json
+{
+  "code": 0,
+  "message": "success",
+  "data": { ... }
+}
+```
+
+Non-zero `code` values indicate errors. Each error code maps to a specific failure reason (e.g., `1001` for invalid credentials, `1002` for insufficient permissions). The frontend maps these codes to localized error messages via i18n.
 
 ### Authentication
 | Method | Path | Description |
@@ -163,14 +198,24 @@ All endpoints are under `/api/admin/v1`:
 | PUT | `/admin-users/:id` | Update admin user |
 | DELETE | `/admin-users/:id` | Delete admin user |
 
+> **Permission-based protection:** All resource endpoints enforce RBAC. `viewer` accounts can only access dashboard endpoints. `admin` accounts have read-only access to all resources. `super_admin` accounts have full read/write access including admin user management. Unauthorized requests receive a `1002` error code.
+
 ## Project Structure
 
 ```
 src/
-├── api/client.ts              # Axios instance with JWT interceptor
-├── App.tsx                    # Routes + QueryClient
+├── api/client.ts              # Axios instance with JWT interceptor, 15s timeout, Accept-Language header
+├── App.tsx                    # Routes + QueryClient + ErrorBoundary
 ├── index.css                  # Tailwind + dark theme CSS variables
-├── stores/auth-store.ts       # Zustand auth state
+├── stores/auth-store.ts       # Zustand auth state with JWT expiry checking
+├── i18n/                      # Internationalization
+│   ├── index.ts               # i18next configuration (5 languages, localStorage persistence)
+│   └── locales/
+│       ├── en/                # English (9 namespace JSON files)
+│       ├── zh/                # 中文
+│       ├── ja/                # 日本語
+│       ├── ko/                # 한국어
+│       └── es/                # Español
 ├── hooks/                     # TanStack Query hooks
 │   ├── use-dashboard.ts
 │   ├── use-merchants.ts
@@ -180,14 +225,16 @@ src/
 │   ├── use-batch-payouts.ts
 │   └── use-wallets.ts
 ├── components/
-│   ├── layout/                # Sidebar, header, app layout
+│   ├── layout/                # Sidebar (mobile responsive w/ hamburger + backdrop), header, app layout
+│   ├── error-boundary.tsx     # Global error boundary with recovery UI
+│   ├── delete-dialog.tsx      # Reusable delete confirmation dialog
 │   ├── data-table.tsx         # Reusable paginated table
 │   ├── stat-card.tsx          # Dashboard stat card
 │   ├── status-badge.tsx       # Status indicator
 │   ├── chain-icon.tsx         # Chain badge/icon
 │   └── address-display.tsx    # Address with copy button
 ├── pages/
-│   ├── login.tsx
+│   ├── login.tsx              # Login with password visibility toggle
 │   ├── dashboard.tsx
 │   ├── merchants/             # list + detail
 │   ├── payments/              # list + detail
@@ -198,7 +245,8 @@ src/
 │   ├── balances.tsx
 │   ├── currencies.tsx
 │   ├── chain-status.tsx
-│   └── settings.tsx
+│   ├── settings.tsx
+│   └── not-found.tsx          # 404 page
 └── types/index.ts             # TypeScript interfaces
 ```
 
@@ -210,16 +258,29 @@ src/
 
 ## Security
 
+### Authentication & Authorization
 - JWT authentication with access/refresh token pair
+- Client-side JWT expiry checking (token decoded to detect expiration before requests)
+- Token cleanup on authentication failure (expired, revoked, or invalid tokens are cleared automatically)
 - Refresh tokens validated with issuer check
-- Login rate limiting (5 requests/minute)
+- Deactivated user token refresh rejection
+- Role-based access control (RBAC) with 3 roles: `super_admin`, `admin`, `viewer`
+- Permission-based endpoint protection on all resource routes
+- Admin self-deletion prevention
+
+### Rate Limiting & Network
+- Login rate limiting (5 requests/minute, backed by Redis)
+- Redis-backed idempotency keys to prevent duplicate mutations
+- 15-second timeout on all API requests
+- WebSocket auto-reconnect with exponential backoff for real-time updates
+
+### Server-Side Protections
 - Timing-attack resistant login (constant-time password comparison)
 - UUID validation on all ID parameters
 - Security headers (X-Frame-Options, X-Content-Type-Options, CSP)
 - CORS with explicit origin whitelist
-- Admin self-deletion prevention
-- Deactivated user token refresh rejection
 - Content Security Policy meta tag
+- GORM ORM (parameterized queries, no raw SQL injection surface)
 
 ## License
 
