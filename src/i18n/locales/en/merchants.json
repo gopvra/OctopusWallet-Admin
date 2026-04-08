@@ -1,0 +1,31 @@
+{
+  "list": {
+    "title": "Merchants",
+    "searchPlaceholder": "Search merchants...",
+    "columns": {
+      "name": "Name",
+      "email": "Email",
+      "status": "Status",
+      "created": "Created",
+      "actions": "Actions"
+    },
+    "activate": "Activate",
+    "deactivate": "Deactivate"
+  },
+  "detail": {
+    "notFound": "Merchant not found",
+    "info": "Merchant Info",
+    "details": "Details",
+    "fields": {
+      "id": "ID",
+      "email": "Email",
+      "webhookUrl": "Webhook URL",
+      "status": "Status",
+      "lastUpdated": "Last Updated",
+      "created": "Created {{date}}"
+    },
+    "notSet": "Not set",
+    "active": "Active",
+    "inactive": "Inactive"
+  }
+}

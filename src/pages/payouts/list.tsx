@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { createColumnHelper } from '@tanstack/react-table'
 import { DataTable } from '@/components/data-table'
 import { StatusBadge } from '@/components/status-badge'
@@ -13,6 +14,7 @@ import type { Payout } from '@/types'
 const columnHelper = createColumnHelper<Payout>()
 
 export default function PayoutListPage() {
+  const { t } = useTranslation(['payouts', 'common'])
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
   const [status, setStatus] = useState('')
@@ -27,23 +29,23 @@ export default function PayoutListPage() {
 
   const columns = [
     columnHelper.accessor('chain', {
-      header: 'Chain',
+      header: t('payouts:list.columns.chain'),
       cell: (info) => <ChainBadge chain={info.getValue()} />,
     }),
     columnHelper.accessor('to_address', {
-      header: 'To Address',
+      header: t('payouts:list.columns.toAddress'),
       cell: (info) => <AddressDisplay address={info.getValue()} />,
     }),
     columnHelper.accessor('amount', {
-      header: 'Amount',
+      header: t('payouts:list.columns.amount'),
       cell: (info) => <span className="font-mono">{formatAmount(info.getValue())}</span>,
     }),
     columnHelper.accessor('status', {
-      header: 'Status',
+      header: t('payouts:list.columns.status'),
       cell: (info) => <StatusBadge status={info.getValue()} />,
     }),
     columnHelper.accessor('created_at', {
-      header: 'Created',
+      header: t('payouts:list.columns.created'),
       cell: (info) => <span className="text-muted-foreground text-xs">{formatDate(info.getValue())}</span>,
     }),
     columnHelper.display({
@@ -62,7 +64,7 @@ export default function PayoutListPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Payouts</h2>
+      <h2 className="text-2xl font-bold">{t('payouts:list.title')}</h2>
 
       <div className="flex items-center gap-4 flex-wrap">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
@@ -71,7 +73,7 @@ export default function PayoutListPage() {
             type="text"
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1) }}
-            placeholder="Search by address or ID..."
+            placeholder={t('payouts:list.searchPlaceholder')}
             className="w-full pl-10 pr-4 py-2 rounded-lg bg-secondary border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm"
           />
         </div>
@@ -80,22 +82,22 @@ export default function PayoutListPage() {
           onChange={(e) => { setStatus(e.target.value); setPage(1) }}
           className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
         >
-          <option value="">All Status</option>
-          <option value="pending">Pending</option>
-          <option value="processing">Processing</option>
-          <option value="completed">Completed</option>
-          <option value="failed">Failed</option>
+          <option value="">{t('payouts:list.statusOptions.all')}</option>
+          <option value="pending">{t('payouts:list.statusOptions.pending')}</option>
+          <option value="processing">{t('payouts:list.statusOptions.processing')}</option>
+          <option value="completed">{t('payouts:list.statusOptions.completed')}</option>
+          <option value="failed">{t('payouts:list.statusOptions.failed')}</option>
         </select>
         <select
           value={chain}
           onChange={(e) => { setChain(e.target.value); setPage(1) }}
           className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
         >
-          <option value="">All Chains</option>
-          <option value="bitcoin">Bitcoin</option>
-          <option value="ethereum">Ethereum</option>
-          <option value="tron">Tron</option>
-          <option value="solana">Solana</option>
+          <option value="">{t('payouts:list.chainOptions.all')}</option>
+          <option value="bitcoin">{t('payouts:list.chainOptions.bitcoin')}</option>
+          <option value="ethereum">{t('payouts:list.chainOptions.ethereum')}</option>
+          <option value="tron">{t('payouts:list.chainOptions.tron')}</option>
+          <option value="solana">{t('payouts:list.chainOptions.solana')}</option>
         </select>
       </div>
 

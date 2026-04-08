@@ -1,0 +1,27 @@
+{
+  "title": "Dashboard",
+  "stats": {
+    "totalMerchants": "Total Merchants",
+    "activeMerchants": "{{count}} active",
+    "totalPayments": "Total Payments",
+    "pendingPayments": "{{count}} pending",
+    "totalPayouts": "Total Payouts",
+    "pendingPayouts": "{{count}} pending",
+    "totalVolume": "Total Volume"
+  },
+  "charts": {
+    "paymentVolume": "Payment Volume",
+    "chainDistribution": "Chain Distribution",
+    "noData": "No data available"
+  },
+  "recentActivity": {
+    "title": "Recent Activity",
+    "type": "Type",
+    "chain": "Chain",
+    "amount": "Amount",
+    "status": "Status",
+    "time": "Time",
+    "noActivity": "No recent activity"
+  },
+  "days": "{{count}}D"
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import api from '@/api/client'
 import { useAuth } from '@/hooks/use-auth'
@@ -7,6 +8,7 @@ import { formatDate } from '@/lib/utils'
 import { Shield, UserPlus, Trash2, Loader2 } from 'lucide-react'
 
 export default function SettingsPage() {
+  const { t } = useTranslation(['settings', 'common'])
   const { user } = useAuth()
   const queryClient = useQueryClient()
   const isSuperAdmin = user?.role === 'super_admin'
@@ -47,22 +49,22 @@ export default function SettingsPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Settings</h2>
+      <h2 className="text-2xl font-bold">{t('settings:title')}</h2>
 
       {/* Current User Info */}
       <div className="rounded-xl border border-white/10 bg-card p-6">
-        <h3 className="text-lg font-semibold mb-4">Your Account</h3>
+        <h3 className="text-lg font-semibold mb-4">{t('settings:account.title')}</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
-            <span className="text-sm text-muted-foreground">Username</span>
+            <span className="text-sm text-muted-foreground">{t('settings:account.username')}</span>
             <p className="font-medium">{user?.username}</p>
           </div>
           <div>
-            <span className="text-sm text-muted-foreground">Email</span>
+            <span className="text-sm text-muted-foreground">{t('settings:account.email')}</span>
             <p className="font-medium">{user?.email}</p>
           </div>
           <div>
-            <span className="text-sm text-muted-foreground">Role</span>
+            <span className="text-sm text-muted-foreground">{t('settings:account.role')}</span>
             <p className="font-medium capitalize flex items-center gap-1.5">
               <Shield className="w-4 h-4 text-primary" />
               {user?.role}
@@ -75,13 +77,13 @@ export default function SettingsPage() {
       {isSuperAdmin && (
         <div className="rounded-xl border border-white/10 bg-card p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold">Admin Users</h3>
+            <h3 className="text-lg font-semibold">{t('settings:adminUsers.title')}</h3>
             <button
               onClick={() => setShowCreate(!showCreate)}
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium transition-colors"
             >
               <UserPlus className="w-4 h-4" />
-              Add User
+              {t('settings:adminUsers.addUser')}
             </button>
           </div>
 
@@ -90,7 +92,7 @@ export default function SettingsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <input
                   type="text"
-                  placeholder="Username"
+                  placeholder={t('settings:adminUsers.form.usernamePlaceholder')}
                   value={form.username}
                   onChange={(e) => setForm({ ...form, username: e.target.value })}
                   className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -98,7 +100,7 @@ export default function SettingsPage() {
                 />
                 <input
                   type="email"
-                  placeholder="Email"
+                  placeholder={t('settings:adminUsers.form.emailPlaceholder')}
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -106,7 +108,7 @@ export default function SettingsPage() {
                 />
                 <input
                   type="password"
-                  placeholder="Password (min 12 chars)"
+                  placeholder={t('settings:adminUsers.form.passwordPlaceholder')}
                   value={form.password}
                   onChange={(e) => setForm({ ...form, password: e.target.value })}
                   className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
@@ -119,8 +121,8 @@ export default function SettingsPage() {
                   onChange={(e) => setForm({ ...form, role: e.target.value })}
                   className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
                 >
-                  <option value="admin">Admin</option>
-                  <option value="super_admin">Super Admin</option>
+                  <option value="admin">{t('settings:adminUsers.form.roleAdmin')}</option>
+                  <option value="super_admin">{t('settings:adminUsers.form.roleSuperAdmin')}</option>
                 </select>
               </div>
               <div className="flex gap-2">
@@ -130,14 +132,14 @@ export default function SettingsPage() {
                   className="px-4 py-2 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium transition-colors disabled:opacity-50 flex items-center gap-2"
                 >
                   {creating && <Loader2 className="w-4 h-4 animate-spin" />}
-                  Create
+                  {t('settings:adminUsers.form.create')}
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowCreate(false)}
                   className="px-4 py-2 rounded-lg bg-secondary hover:bg-secondary/80 text-foreground text-sm font-medium transition-colors"
                 >
-                  Cancel
+                  {t('settings:adminUsers.form.cancel')}
                 </button>
               </div>
             </form>
@@ -147,11 +149,11 @@ export default function SettingsPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-white/10">
-                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Username</th>
-                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Email</th>
-                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Role</th>
-                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Created</th>
-                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Actions</th>
+                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('settings:adminUsers.columns.username')}</th>
+                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('settings:adminUsers.columns.email')}</th>
+                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('settings:adminUsers.columns.role')}</th>
+                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('settings:adminUsers.columns.created')}</th>
+                  <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('settings:adminUsers.columns.actions')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -171,7 +173,7 @@ export default function SettingsPage() {
                       {au.id !== user?.id && (
                         <button
                           onClick={() => {
-                            if (window.confirm(`Delete admin user "${au.username}"? This cannot be undone.`)) {
+                            if (window.confirm(t('settings:adminUsers.deleteConfirm', { username: au.username }))) {
                               deleteUser.mutate(au.id)
                             }
                           }}

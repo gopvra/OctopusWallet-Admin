@@ -1,0 +1,46 @@
+{
+  "list": {
+    "title": "Refunds",
+    "searchPlaceholder": "Search...",
+    "columns": {
+      "chain": "Chain",
+      "toAddress": "To Address",
+      "amount": "Amount",
+      "reason": "Reason",
+      "status": "Status",
+      "created": "Created"
+    },
+    "statusOptions": {
+      "all": "All Status",
+      "pending": "Pending",
+      "processing": "Processing",
+      "completed": "Completed",
+      "failed": "Failed"
+    },
+    "chainOptions": {
+      "all": "All Chains",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "Refund Detail",
+    "notFound": "Refund not found",
+    "fields": {
+      "id": "ID",
+      "paymentId": "Payment ID",
+      "merchantId": "Merchant ID",
+      "chain": "Chain",
+      "token": "Token",
+      "toAddress": "To Address",
+      "amount": "Amount",
+      "status": "Status",
+      "reason": "Reason",
+      "txHash": "TX Hash",
+      "error": "Error",
+      "created": "Created"
+    }
+  }
+}

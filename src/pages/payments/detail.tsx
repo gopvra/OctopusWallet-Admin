@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { usePayment } from '@/hooks/use-payments'
 import { StatusBadge } from '@/components/status-badge'
 import { ChainBadge } from '@/components/chain-icon'
@@ -7,6 +8,7 @@ import { formatDate, formatAmount } from '@/lib/utils'
 import { ArrowLeft } from 'lucide-react'
 
 export default function PaymentDetailPage() {
+  const { t } = useTranslation(['payments', 'common'])
   const { id } = useParams<{ id: string }>()
   const { data: payment, isLoading } = usePayment(id!)
 
@@ -15,23 +17,23 @@ export default function PaymentDetailPage() {
   }
 
   if (!payment) {
-    return <div className="text-center py-12 text-muted-foreground">Payment not found</div>
+    return <div className="text-center py-12 text-muted-foreground">{t('payments:detail.notFound')}</div>
   }
 
   const fields = [
-    { label: 'ID', value: payment.id, mono: true },
-    { label: 'Merchant ID', value: payment.merchant_id, mono: true },
-    { label: 'Chain', value: <ChainBadge chain={payment.chain} /> },
-    { label: 'Token', value: payment.token || 'Native' },
-    { label: 'Address', value: <AddressDisplay address={payment.address} chars={10} /> },
-    { label: 'Expected', value: formatAmount(payment.amount_expected), mono: true },
-    { label: 'Received', value: formatAmount(payment.amount_received), mono: true },
-    { label: 'Status', value: <StatusBadge status={payment.status} /> },
-    { label: 'Confirmations', value: payment.confirmations },
-    { label: 'TX Hash', value: payment.tx_hash ? <AddressDisplay address={payment.tx_hash} chars={10} /> : 'N/A' },
-    { label: 'Expires', value: payment.expires_at ? formatDate(payment.expires_at) : 'N/A' },
-    { label: 'Created', value: formatDate(payment.created_at) },
-    { label: 'Updated', value: formatDate(payment.updated_at) },
+    { label: t('payments:detail.fields.id'), value: payment.id, mono: true },
+    { label: t('payments:detail.fields.merchantId'), value: payment.merchant_id, mono: true },
+    { label: t('payments:detail.fields.chain'), value: <ChainBadge chain={payment.chain} /> },
+    { label: t('payments:detail.fields.token'), value: payment.token || t('common:native') },
+    { label: t('payments:detail.fields.address'), value: <AddressDisplay address={payment.address} chars={10} /> },
+    { label: t('payments:detail.fields.expected'), value: formatAmount(payment.amount_expected), mono: true },
+    { label: t('payments:detail.fields.received'), value: formatAmount(payment.amount_received), mono: true },
+    { label: t('payments:detail.fields.status'), value: <StatusBadge status={payment.status} /> },
+    { label: t('payments:detail.fields.confirmations'), value: payment.confirmations },
+    { label: t('payments:detail.fields.txHash'), value: payment.tx_hash ? <AddressDisplay address={payment.tx_hash} chars={10} /> : t('common:na') },
+    { label: t('payments:detail.fields.expires'), value: payment.expires_at ? formatDate(payment.expires_at) : t('common:na') },
+    { label: t('payments:detail.fields.created'), value: formatDate(payment.created_at) },
+    { label: t('payments:detail.fields.updated'), value: formatDate(payment.updated_at) },
   ]
 
   return (
@@ -40,7 +42,7 @@ export default function PaymentDetailPage() {
         <Link to="/payments" className="p-2 rounded-lg hover:bg-white/5 text-muted-foreground hover:text-foreground transition-colors">
           <ArrowLeft className="w-5 h-5" />
         </Link>
-        <h2 className="text-2xl font-bold">Payment Detail</h2>
+        <h2 className="text-2xl font-bold">{t('payments:detail.title')}</h2>
         <StatusBadge status={payment.status} />
       </div>
 

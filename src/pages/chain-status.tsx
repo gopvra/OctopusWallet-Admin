@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useChainStates } from '@/hooks/use-wallets'
 import { ChainIcon } from '@/components/chain-icon'
 import { formatDate } from '@/lib/utils'
@@ -13,11 +14,12 @@ const chainInfo: Record<string, { name: string; color: string }> = {
 }
 
 export default function ChainStatusPage() {
+  const { t } = useTranslation(['settings', 'common'])
   const { data: states, isLoading } = useChainStates()
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Chain Status</h2>
+      <h2 className="text-2xl font-bold">{t('settings:chainStatus.title')}</h2>
 
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -40,7 +42,7 @@ export default function ChainStatusPage() {
                     <h3 className="font-semibold capitalize">{info.name}</h3>
                     <div className="flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span className="text-xs text-emerald-400">Syncing</span>
+                      <span className="text-xs text-emerald-400">{t('settings:chainStatus.syncing')}</span>
                     </div>
                   </div>
                 </div>
@@ -49,14 +51,14 @@ export default function ChainStatusPage() {
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground flex items-center gap-1.5">
                       <Box className="w-3.5 h-3.5" />
-                      Last Block
+                      {t('settings:chainStatus.lastBlock')}
                     </span>
                     <span className="font-mono text-sm">{state.last_scanned_block.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground flex items-center gap-1.5">
                       <Activity className="w-3.5 h-3.5" />
-                      Updated
+                      {t('settings:chainStatus.updated')}
                     </span>
                     <span className="text-xs text-muted-foreground">{formatDate(state.updated_at)}</span>
                   </div>
@@ -68,8 +70,8 @@ export default function ChainStatusPage() {
       ) : (
         <div className="rounded-xl border border-white/10 bg-card p-12 text-center">
           <Activity className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-          <p className="text-muted-foreground">No chain state data available</p>
-          <p className="text-xs text-muted-foreground mt-1">Chain states will appear once the monitor starts scanning</p>
+          <p className="text-muted-foreground">{t('settings:chainStatus.noData')}</p>
+          <p className="text-xs text-muted-foreground mt-1">{t('settings:chainStatus.noDataHint')}</p>
         </div>
       )}
     </div>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { cn } from '@/lib/utils'
 
 const statusStyles: Record<string, string> = {
@@ -9,7 +10,23 @@ const statusStyles: Record<string, string> = {
   processing: 'bg-purple-500/15 text-purple-400 border-purple-500/30',
 }
 
+const statusKeys: Record<string, string> = {
+  pending: 'common:status.pending',
+  confirming: 'common:status.confirming',
+  completed: 'common:status.completed',
+  expired: 'common:status.expired',
+  failed: 'common:status.failed',
+  processing: 'common:status.processing',
+  approved: 'common:status.approved',
+  rejected: 'common:status.rejected',
+  partial: 'common:status.partial',
+  active: 'common:status.active',
+  inactive: 'common:status.inactive',
+}
+
 export function StatusBadge({ status }: { status: string }) {
+  const { t } = useTranslation(['common'])
+
   return (
     <span
       className={cn(
@@ -18,7 +35,7 @@ export function StatusBadge({ status }: { status: string }) {
       )}
     >
       <span className="w-1.5 h-1.5 rounded-full bg-current mr-1.5" />
-      {status}
+      {statusKeys[status] ? t(statusKeys[status]) : status}
     </span>
   )
 }

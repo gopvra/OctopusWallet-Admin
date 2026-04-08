@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Users, CreditCard, ArrowUpRight, TrendingUp } from 'lucide-react'
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
 import { StatCard } from '@/components/stat-card'
@@ -17,6 +18,7 @@ const CHAIN_COLORS: Record<string, string> = {
 }
 
 export default function DashboardPage() {
+  const { t } = useTranslation(['dashboard', 'common'])
   const [days, setDays] = useState(7)
   const { data: stats } = useDashboardStats()
   const { data: volumeData } = useVolumeChart(days)
@@ -25,33 +27,33 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Dashboard</h2>
+      <h2 className="text-2xl font-bold">{t('dashboard:title')}</h2>
 
       {/* Stat Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard
-          title="Total Merchants"
+          title={t('dashboard:stats.totalMerchants')}
           value={stats?.total_merchants ?? 0}
-          subtitle={`${stats?.active_merchants ?? 0} active`}
+          subtitle={t('dashboard:stats.activeMerchants', { count: stats?.active_merchants ?? 0 })}
           icon={<Users className="w-6 h-6" />}
           gradient="bg-gradient-to-br from-indigo-500/20 to-indigo-900/20"
         />
         <StatCard
-          title="Total Payments"
+          title={t('dashboard:stats.totalPayments')}
           value={stats?.total_payments ?? 0}
-          subtitle={`${stats?.pending_payments ?? 0} pending`}
+          subtitle={t('dashboard:stats.pendingPayments', { count: stats?.pending_payments ?? 0 })}
           icon={<CreditCard className="w-6 h-6" />}
           gradient="bg-gradient-to-br from-cyan-500/20 to-cyan-900/20"
         />
         <StatCard
-          title="Total Payouts"
+          title={t('dashboard:stats.totalPayouts')}
           value={stats?.total_payouts ?? 0}
-          subtitle={`${stats?.pending_payouts ?? 0} pending`}
+          subtitle={t('dashboard:stats.pendingPayouts', { count: stats?.pending_payouts ?? 0 })}
           icon={<ArrowUpRight className="w-6 h-6" />}
           gradient="bg-gradient-to-br from-purple-500/20 to-purple-900/20"
         />
         <StatCard
-          title="Total Volume"
+          title={t('dashboard:stats.totalVolume')}
           value={formatAmount(stats?.total_volume ?? '0')}
           icon={<TrendingUp className="w-6 h-6" />}
           gradient="bg-gradient-to-br from-emerald-500/20 to-emerald-900/20"
@@ -63,7 +65,7 @@ export default function DashboardPage() {
         {/* Volume Chart */}
         <div className="lg:col-span-2 rounded-xl border border-white/10 bg-card p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold">Payment Volume</h3>
+            <h3 className="text-lg font-semibold">{t('dashboard:charts.paymentVolume')}</h3>
             <div className="flex gap-1">
               {[7, 30, 90].map((d) => (
                 <button
@@ -73,7 +75,7 @@ export default function DashboardPage() {
                     days === d ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-white/5'
                   }`}
                 >
-                  {d}D
+                  {t('dashboard:days', { count: d })}
                 </button>
               ))}
             </div>
@@ -99,7 +101,7 @@ export default function DashboardPage() {
 
         {/* Chain Distribution */}
         <div className="rounded-xl border border-white/10 bg-card p-6">
-          <h3 className="text-lg font-semibold mb-4">Chain Distribution</h3>
+          <h3 className="text-lg font-semibold mb-4">{t('dashboard:charts.chainDistribution')}</h3>
           {chainDist && chainDist.length > 0 ? (
             <>
               <ResponsiveContainer width="100%" height={180}>
@@ -126,14 +128,14 @@ export default function DashboardPage() {
                 {chainDist.map((item) => (
                   <div key={item.chain} className="flex items-center justify-between text-sm">
                     <ChainBadge chain={item.chain} />
-                    <span className="text-muted-foreground">{item.count} txns</span>
+                    <span className="text-muted-foreground">{item.count} {t('common:txns')}</span>
                   </div>
                 ))}
               </div>
             </>
           ) : (
             <div className="flex items-center justify-center h-[200px] text-muted-foreground text-sm">
-              No data available
+              {t('dashboard:charts.noData')}
             </div>
           )}
         </div>
@@ -141,16 +143,16 @@ export default function DashboardPage() {
 
       {/* Recent Activity */}
       <div className="rounded-xl border border-white/10 bg-card p-6">
-        <h3 className="text-lg font-semibold mb-4">Recent Activity</h3>
+        <h3 className="text-lg font-semibold mb-4">{t('dashboard:recentActivity.title')}</h3>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/10">
-                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Type</th>
-                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Chain</th>
-                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Amount</th>
-                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Status</th>
-                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">Time</th>
+                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('dashboard:recentActivity.type')}</th>
+                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('dashboard:recentActivity.chain')}</th>
+                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('dashboard:recentActivity.amount')}</th>
+                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('dashboard:recentActivity.status')}</th>
+                <th className="text-left py-2 px-3 text-xs font-medium text-muted-foreground uppercase">{t('dashboard:recentActivity.time')}</th>
               </tr>
             </thead>
             <tbody>
@@ -161,7 +163,7 @@ export default function DashboardPage() {
                       <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
                         item.type === 'payment' ? 'bg-blue-500/10 text-blue-400' : 'bg-purple-500/10 text-purple-400'
                       }`}>
-                        {item.type}
+                        {item.type === 'payment' ? t('common:payment') : t('common:payout')}
                       </span>
                     </td>
                     <td className="py-2.5 px-3"><ChainBadge chain={item.chain} /></td>
@@ -172,7 +174,7 @@ export default function DashboardPage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan={5} className="py-8 text-center text-muted-foreground">No recent activity</td>
+                  <td colSpan={5} className="py-8 text-center text-muted-foreground">{t('dashboard:recentActivity.noActivity')}</td>
                 </tr>
               )}
             </tbody>

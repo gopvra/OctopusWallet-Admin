@@ -1,0 +1,89 @@
+{
+  "list": {
+    "title": "Payouts",
+    "searchPlaceholder": "Search by address or ID...",
+    "columns": {
+      "chain": "Chain",
+      "toAddress": "To Address",
+      "amount": "Amount",
+      "status": "Status",
+      "created": "Created"
+    },
+    "statusOptions": {
+      "all": "All Status",
+      "pending": "Pending",
+      "processing": "Processing",
+      "completed": "Completed",
+      "failed": "Failed"
+    },
+    "chainOptions": {
+      "all": "All Chains",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "Payout Detail",
+    "notFound": "Payout not found",
+    "fields": {
+      "id": "ID",
+      "merchantId": "Merchant ID",
+      "chain": "Chain",
+      "token": "Token",
+      "toAddress": "To Address",
+      "amount": "Amount",
+      "status": "Status",
+      "txHash": "TX Hash",
+      "error": "Error",
+      "created": "Created",
+      "updated": "Updated"
+    }
+  },
+  "batch": {
+    "list": {
+      "title": "Batch Payouts",
+      "columns": {
+        "chain": "Chain",
+        "total": "Total",
+        "items": "Items",
+        "progress": "Progress",
+        "status": "Status",
+        "created": "Created"
+      },
+      "statusOptions": {
+        "all": "All Status",
+        "pending": "Pending",
+        "processing": "Processing",
+        "completed": "Completed",
+        "partial": "Partial",
+        "failed": "Failed"
+      },
+      "chainOptions": {
+        "all": "All Chains",
+        "bitcoin": "Bitcoin",
+        "ethereum": "Ethereum",
+        "tron": "Tron",
+        "solana": "Solana"
+      }
+    },
+    "detail": {
+      "title": "Batch Payout",
+      "notFound": "Batch payout not found",
+      "chain": "Chain",
+      "totalAmount": "Total Amount",
+      "progress": "Progress",
+      "created": "Created",
+      "completedOf": "{{completed}}/{{total}} completed",
+      "payoutItems": "Payout Items ({{count}})",
+      "columns": {
+        "toAddress": "To Address",
+        "amount": "Amount",
+        "status": "Status",
+        "error": "Error"
+      },
+      "noItems": "No items"
+    }
+  }
+}

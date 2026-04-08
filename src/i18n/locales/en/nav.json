@@ -1,0 +1,16 @@
+{
+  "dashboard": "Dashboard",
+  "merchants": "Merchants",
+  "payments": "Payments",
+  "payouts": "Payouts",
+  "refunds": "Refunds",
+  "batchPayouts": "Batch Payouts",
+  "wallets": "Wallets",
+  "balances": "Balances",
+  "currencies": "Currencies",
+  "chainStatus": "Chain Status",
+  "settings": "Settings",
+  "brand": "Octopus",
+  "adminPanel": "Admin Panel",
+  "version": "OctopusWallet v1.0"
+}

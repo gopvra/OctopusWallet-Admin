@@ -1,0 +1,47 @@
+{
+  "list": {
+    "title": "收款管理",
+    "searchPlaceholder": "按地址或ID搜索...",
+    "columns": {
+      "chain": "链",
+      "address": "地址",
+      "expected": "预期金额",
+      "received": "已收金额",
+      "status": "状态",
+      "created": "创建时间"
+    },
+    "statusOptions": {
+      "all": "全部状态",
+      "pending": "待处理",
+      "confirming": "确认中",
+      "completed": "已完成",
+      "expired": "已过期"
+    },
+    "chainOptions": {
+      "all": "全部链",
+      "bitcoin": "比特币",
+      "ethereum": "以太坊",
+      "tron": "波场",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "收款详情",
+    "notFound": "收款记录不存在",
+    "fields": {
+      "id": "ID",
+      "merchantId": "商户 ID",
+      "chain": "链",
+      "token": "代币",
+      "address": "地址",
+      "expected": "预期金额",
+      "received": "已收金额",
+      "status": "状态",
+      "confirmations": "确认数",
+      "txHash": "交易哈希",
+      "expires": "过期时间",
+      "created": "创建时间",
+      "updated": "更新时间"
+    }
+  }
+}

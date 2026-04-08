@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import {
   LayoutDashboard,
   Users,
@@ -13,22 +14,31 @@ import {
   Coins,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import type { LucideIcon } from 'lucide-react'
 
-const navItems = [
-  { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/merchants', icon: Users, label: 'Merchants' },
-  { to: '/payments', icon: CreditCard, label: 'Payments' },
-  { to: '/payouts', icon: ArrowUpRight, label: 'Payouts' },
-  { to: '/refunds', icon: RotateCcw, label: 'Refunds' },
-  { to: '/batch-payouts', icon: Layers, label: 'Batch Payouts' },
-  { to: '/wallets', icon: Wallet, label: 'Wallets' },
-  { to: '/balances', icon: PiggyBank, label: 'Balances' },
-  { to: '/currencies', icon: Coins, label: 'Currencies' },
-  { to: '/chain-status', icon: Link2, label: 'Chain Status' },
-  { to: '/settings', icon: Settings, label: 'Settings' },
+interface NavItem {
+  to: string
+  icon: LucideIcon
+  i18nKey: string
+}
+
+const navItems: NavItem[] = [
+  { to: '/', icon: LayoutDashboard, i18nKey: 'dashboard' },
+  { to: '/merchants', icon: Users, i18nKey: 'merchants' },
+  { to: '/payments', icon: CreditCard, i18nKey: 'payments' },
+  { to: '/payouts', icon: ArrowUpRight, i18nKey: 'payouts' },
+  { to: '/refunds', icon: RotateCcw, i18nKey: 'refunds' },
+  { to: '/batch-payouts', icon: Layers, i18nKey: 'batchPayouts' },
+  { to: '/wallets', icon: Wallet, i18nKey: 'wallets' },
+  { to: '/balances', icon: PiggyBank, i18nKey: 'balances' },
+  { to: '/currencies', icon: Coins, i18nKey: 'currencies' },
+  { to: '/chain-status', icon: Link2, i18nKey: 'chainStatus' },
+  { to: '/settings', icon: Settings, i18nKey: 'settings' },
 ]
 
 export function Sidebar() {
+  const { t } = useTranslation('nav')
+
   return (
     <aside className="fixed inset-y-0 left-0 z-50 w-64 glass flex flex-col">
       {/* Logo */}
@@ -40,7 +50,7 @@ export function Sidebar() {
         </div>
         <div>
           <h1 className="text-lg font-bold text-foreground">Octopus</h1>
-          <p className="text-xs text-muted-foreground">Admin Panel</p>
+          <p className="text-xs text-muted-foreground">{t('auth:subtitle')}</p>
         </div>
       </div>
 
@@ -61,7 +71,7 @@ export function Sidebar() {
             }
           >
             <item.icon className="w-5 h-5" />
-            {item.label}
+            {t(item.i18nKey)}
           </NavLink>
         ))}
       </nav>

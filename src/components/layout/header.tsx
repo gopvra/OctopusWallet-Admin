@@ -1,6 +1,7 @@
 import { useAuth } from '@/hooks/use-auth'
 import { LogOut, User } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { LanguageSwitcher } from '@/components/language-switcher'
 
 export function Header() {
   const { user, logout } = useAuth()
@@ -15,6 +16,7 @@ export function Header() {
     <header className="sticky top-0 z-40 h-16 glass flex items-center justify-between px-6">
       <div />
       <div className="flex items-center gap-4">
+        <LanguageSwitcher />
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
             <User className="w-4 h-4 text-primary" />

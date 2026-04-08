@@ -1,0 +1,46 @@
+{
+  "list": {
+    "title": "退款管理",
+    "searchPlaceholder": "搜索...",
+    "columns": {
+      "chain": "链",
+      "toAddress": "收款地址",
+      "amount": "金额",
+      "reason": "原因",
+      "status": "状态",
+      "created": "创建时间"
+    },
+    "statusOptions": {
+      "all": "全部状态",
+      "pending": "待处理",
+      "processing": "处理中",
+      "completed": "已完成",
+      "failed": "失败"
+    },
+    "chainOptions": {
+      "all": "全部链",
+      "bitcoin": "比特币",
+      "ethereum": "以太坊",
+      "tron": "波场",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "退款详情",
+    "notFound": "退款记录不存在",
+    "fields": {
+      "id": "ID",
+      "paymentId": "收款 ID",
+      "merchantId": "商户 ID",
+      "chain": "链",
+      "token": "代币",
+      "toAddress": "收款地址",
+      "amount": "金额",
+      "status": "状态",
+      "reason": "原因",
+      "txHash": "交易哈希",
+      "error": "错误",
+      "created": "创建时间"
+    }
+  }
+}

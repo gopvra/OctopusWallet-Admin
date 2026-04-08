@@ -1,13 +1,15 @@
+import { useTranslation } from 'react-i18next'
 import { useSupportedCurrencies } from '@/hooks/use-batch-payouts'
 import { ChainIcon } from '@/components/chain-icon'
 import { Coins } from 'lucide-react'
 
 export default function CurrenciesPage() {
+  const { t } = useTranslation(['settings', 'common'])
   const { data: currencies, isLoading } = useSupportedCurrencies()
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Supported Currencies</h2>
+      <h2 className="text-2xl font-bold">{t('settings:currencies.title')}</h2>
 
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -24,19 +26,19 @@ export default function CurrenciesPage() {
                   <p className="text-xs text-muted-foreground">{c.name}</p>
                 </div>
                 <div className="ml-auto flex gap-2">
-                  {c.is_native && <span className="px-2 py-0.5 rounded text-xs bg-primary/15 text-primary">Native</span>}
+                  {c.is_native && <span className="px-2 py-0.5 rounded text-xs bg-primary/15 text-primary">{t('settings:currencies.native')}</span>}
                   <span className={`px-2 py-0.5 rounded text-xs ${c.is_active ? 'bg-emerald-500/15 text-emerald-400' : 'bg-red-500/15 text-red-400'}`}>
-                    {c.is_active ? 'Active' : 'Inactive'}
+                    {c.is_active ? t('settings:currencies.active') : t('settings:currencies.inactive')}
                   </span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div>
-                  <span className="text-muted-foreground">Chain</span>
+                  <span className="text-muted-foreground">{t('settings:currencies.chain')}</span>
                   <p className="capitalize">{c.chain}</p>
                 </div>
                 <div>
-                  <span className="text-muted-foreground">Decimals</span>
+                  <span className="text-muted-foreground">{t('settings:currencies.decimals')}</span>
                   <p>{c.decimals}</p>
                 </div>
               </div>
@@ -46,7 +48,7 @@ export default function CurrenciesPage() {
       ) : (
         <div className="rounded-xl border border-white/10 bg-card p-12 text-center">
           <Coins className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-          <p className="text-muted-foreground">No currencies configured</p>
+          <p className="text-muted-foreground">{t('settings:currencies.noData')}</p>
         </div>
       )}
     </div>

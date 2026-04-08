@@ -1,0 +1,76 @@
+{
+  "title": "系统设置",
+  "account": {
+    "title": "我的账户",
+    "username": "用户名",
+    "email": "邮箱",
+    "role": "角色"
+  },
+  "adminUsers": {
+    "title": "管理员",
+    "addUser": "添加用户",
+    "columns": {
+      "username": "用户名",
+      "email": "邮箱",
+      "role": "角色",
+      "created": "创建时间",
+      "actions": "操作"
+    },
+    "form": {
+      "usernamePlaceholder": "用户名",
+      "emailPlaceholder": "邮箱",
+      "passwordPlaceholder": "密码（至少12位）",
+      "roleAdmin": "管理员",
+      "roleSuperAdmin": "超级管理员",
+      "create": "创建",
+      "cancel": "取消"
+    },
+    "deleteConfirm": "确定删除管理员 \"{{username}}\"？此操作不可撤销。"
+  },
+  "wallets": {
+    "title": "钱包管理",
+    "searchPlaceholder": "按地址搜索...",
+    "columns": {
+      "chain": "链",
+      "address": "地址",
+      "merchant": "商户",
+      "index": "索引",
+      "created": "创建时间"
+    },
+    "chainOptions": {
+      "all": "全部链",
+      "bitcoin": "比特币",
+      "ethereum": "以太坊",
+      "tron": "波场",
+      "solana": "Solana"
+    }
+  },
+  "balances": {
+    "title": "商户余额",
+    "columns": {
+      "merchant": "商户",
+      "chain": "链",
+      "token": "代币",
+      "available": "可用余额",
+      "pending": "待定余额"
+    },
+    "noData": "暂无余额数据"
+  },
+  "currencies": {
+    "title": "支持的币种",
+    "native": "原生代币",
+    "active": "已启用",
+    "inactive": "未启用",
+    "chain": "链",
+    "decimals": "精度",
+    "noData": "暂无币种配置"
+  },
+  "chainStatus": {
+    "title": "链状态",
+    "syncing": "同步中",
+    "lastBlock": "最新区块",
+    "updated": "更新时间",
+    "noData": "暂无链状态数据",
+    "noDataHint": "链状态将在监控开始扫描后显示"
+  }
+}

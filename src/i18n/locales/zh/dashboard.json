@@ -1,0 +1,27 @@
+{
+  "title": "仪表盘",
+  "stats": {
+    "totalMerchants": "商户总数",
+    "activeMerchants": "{{count}} 个活跃",
+    "totalPayments": "收款总数",
+    "pendingPayments": "{{count}} 笔待处理",
+    "totalPayouts": "付款总数",
+    "pendingPayouts": "{{count}} 笔待处理",
+    "totalVolume": "总交易量"
+  },
+  "charts": {
+    "paymentVolume": "收款量",
+    "chainDistribution": "链分布",
+    "noData": "暂无数据"
+  },
+  "recentActivity": {
+    "title": "最近活动",
+    "type": "类型",
+    "chain": "链",
+    "amount": "金额",
+    "status": "状态",
+    "time": "时间",
+    "noActivity": "暂无最近活动"
+  },
+  "days": "{{count}}天"
+}
