@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="50%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="tentGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="cheekL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#f472b6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="cheekR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#f472b6" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="35%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Tentacles (8 total, curling outward) -->
+  <g fill="none" stroke-width="28" stroke-linecap="round">
+    <!-- Back tentacles (drawn first, behind body) -->
+    <!-- Left back -->
+    <path d="M160 310 Q100 380 80 430 Q65 470 90 480 Q115 490 120 460" stroke="url(#tentGrad)" opacity="0.7"/>
+    <!-- Right back -->
+    <path d="M352 310 Q412 380 432 430 Q447 470 422 480 Q397 490 392 460" stroke="url(#tentGrad)" opacity="0.7"/>
+    <!-- Far left -->
+    <path d="M140 290 Q60 330 40 390 Q25 440 55 455 Q85 465 80 430" stroke="url(#tentGrad)" opacity="0.6"/>
+    <!-- Far right -->
+    <path d="M372 290 Q452 330 472 390 Q487 440 457 455 Q427 465 432 430" stroke="url(#tentGrad)" opacity="0.6"/>
+  </g>
+
+  <!-- Body (head) -->
+  <ellipse cx="256" cy="230" rx="140" ry="150" fill="url(#bodyGrad)"/>
+  <!-- Body shine -->
+  <ellipse cx="256" cy="230" rx="140" ry="150" fill="url(#shine)"/>
+
+  <!-- Front tentacles -->
+  <g fill="none" stroke-width="30" stroke-linecap="round">
+    <!-- Center left -->
+    <path d="M200 340 Q170 400 155 440 Q140 475 168 485 Q196 490 190 455" stroke="url(#tentGrad)"/>
+    <!-- Center right -->
+    <path d="M312 340 Q342 400 357 440 Q372 475 344 485 Q316 490 322 455" stroke="url(#tentGrad)"/>
+    <!-- Inner left -->
+    <path d="M230 350 Q220 410 225 450 Q228 480 252 478 Q272 472 260 445" stroke="url(#tentGrad)"/>
+    <!-- Inner right -->
+    <path d="M282 350 Q292 410 287 450 Q284 480 260 478 Q240 472 252 445" stroke="url(#tentGrad)"/>
+  </g>
+
+  <!-- Tentacle suction cups (small circles on front tentacles) -->
+  <g fill="#a5b4fc" opacity="0.5">
+    <circle cx="185" cy="410" r="6"/>
+    <circle cx="175" cy="440" r="5"/>
+    <circle cx="170" cy="465" r="4"/>
+    <circle cx="327" cy="410" r="6"/>
+    <circle cx="337" cy="440" r="5"/>
+    <circle cx="342" cy="465" r="4"/>
+    <circle cx="225" cy="420" r="5"/>
+    <circle cx="228" cy="448" r="4"/>
+    <circle cx="287" cy="420" r="5"/>
+    <circle cx="284" cy="448" r="4"/>
+  </g>
+
+  <!-- Face -->
+  <!-- Eyes - white background -->
+  <ellipse cx="210" cy="220" rx="36" ry="40" fill="#fff"/>
+  <ellipse cx="302" cy="220" rx="36" ry="40" fill="#fff"/>
+
+  <!-- Eyes - pupils (looking slightly up-right for cute effect) -->
+  <ellipse cx="218" cy="215" rx="20" ry="24" fill="#1e1b4b"/>
+  <ellipse cx="310" cy="215" rx="20" ry="24" fill="#1e1b4b"/>
+
+  <!-- Eyes - highlights (sparkle) -->
+  <circle cx="226" cy="205" r="8" fill="#fff"/>
+  <circle cx="318" cy="205" r="8" fill="#fff"/>
+  <circle cx="214" cy="222" r="4" fill="#fff" opacity="0.6"/>
+  <circle cx="306" cy="222" r="4" fill="#fff" opacity="0.6"/>
+
+  <!-- Blush cheeks -->
+  <ellipse cx="168" cy="258" rx="25" ry="15" fill="url(#cheekL)"/>
+  <ellipse cx="344" cy="258" rx="25" ry="15" fill="url(#cheekR)"/>
+
+  <!-- Smile (cute curved line) -->
+  <path d="M232 268 Q256 290 280 268" fill="none" stroke="#4338ca" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Tiny crown / crypto sparkle on top -->
+  <g transform="translate(256, 85)" fill="#fbbf24">
+    <polygon points="0,-18 5,-6 18,-6 8,2 12,14 0,7 -12,14 -8,2 -18,-6 -5,-6" opacity="0.9"/>
+  </g>
+</svg>
