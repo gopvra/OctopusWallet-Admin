@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { createColumnHelper } from '@tanstack/react-table'
 import { DataTable } from '@/components/data-table'
 import { StatusBadge } from '@/components/status-badge'
@@ -13,6 +14,7 @@ import type { Refund } from '@/types'
 const columnHelper = createColumnHelper<Refund>()
 
 export default function RefundListPage() {
+  const { t } = useTranslation(['refunds', 'common'])
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState('')
   const [status, setStatus] = useState('')
@@ -27,27 +29,27 @@ export default function RefundListPage() {
 
   const columns = [
     columnHelper.accessor('chain', {
-      header: 'Chain',
+      header: t('refunds:list.columns.chain'),
       cell: (info) => <ChainBadge chain={info.getValue()} />,
     }),
     columnHelper.accessor('to_address', {
-      header: 'To Address',
+      header: t('refunds:list.columns.toAddress'),
       cell: (info) => <AddressDisplay address={info.getValue()} />,
     }),
     columnHelper.accessor('amount', {
-      header: 'Amount',
+      header: t('refunds:list.columns.amount'),
       cell: (info) => <span className="font-mono">{formatAmount(info.getValue())}</span>,
     }),
     columnHelper.accessor('reason', {
-      header: 'Reason',
+      header: t('refunds:list.columns.reason'),
       cell: (info) => <span className="text-muted-foreground text-xs truncate max-w-[120px] inline-block">{info.getValue() || '-'}</span>,
     }),
     columnHelper.accessor('status', {
-      header: 'Status',
+      header: t('refunds:list.columns.status'),
       cell: (info) => <StatusBadge status={info.getValue()} />,
     }),
     columnHelper.accessor('created_at', {
-      header: 'Created',
+      header: t('refunds:list.columns.created'),
       cell: (info) => <span className="text-muted-foreground text-xs">{formatDate(info.getValue())}</span>,
     }),
     columnHelper.display({
@@ -63,25 +65,25 @@ export default function RefundListPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Refunds</h2>
+      <h2 className="text-2xl font-bold">{t('refunds:list.title')}</h2>
       <div className="flex items-center gap-4 flex-wrap">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <input type="text" value={search} onChange={(e) => { setSearch(e.target.value); setPage(1) }} placeholder="Search..." className="w-full pl-10 pr-4 py-2 rounded-lg bg-secondary border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" />
+          <input type="text" value={search} onChange={(e) => { setSearch(e.target.value); setPage(1) }} placeholder={t('refunds:list.searchPlaceholder')} className="w-full pl-10 pr-4 py-2 rounded-lg bg-secondary border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" />
         </div>
         <select value={status} onChange={(e) => { setStatus(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50">
-          <option value="">All Status</option>
-          <option value="pending">Pending</option>
-          <option value="processing">Processing</option>
-          <option value="completed">Completed</option>
-          <option value="failed">Failed</option>
+          <option value="">{t('refunds:list.statusOptions.all')}</option>
+          <option value="pending">{t('refunds:list.statusOptions.pending')}</option>
+          <option value="processing">{t('refunds:list.statusOptions.processing')}</option>
+          <option value="completed">{t('refunds:list.statusOptions.completed')}</option>
+          <option value="failed">{t('refunds:list.statusOptions.failed')}</option>
         </select>
         <select value={chain} onChange={(e) => { setChain(e.target.value); setPage(1) }} className="px-3 py-2 rounded-lg bg-secondary border border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50">
-          <option value="">All Chains</option>
-          <option value="bitcoin">Bitcoin</option>
-          <option value="ethereum">Ethereum</option>
-          <option value="tron">Tron</option>
-          <option value="solana">Solana</option>
+          <option value="">{t('refunds:list.chainOptions.all')}</option>
+          <option value="bitcoin">{t('refunds:list.chainOptions.bitcoin')}</option>
+          <option value="ethereum">{t('refunds:list.chainOptions.ethereum')}</option>
+          <option value="tron">{t('refunds:list.chainOptions.tron')}</option>
+          <option value="solana">{t('refunds:list.chainOptions.solana')}</option>
         </select>
       </div>
       <DataTable data={data?.data ?? []} columns={columns} meta={data?.meta} onPageChange={setPage} isLoading={isLoading} />

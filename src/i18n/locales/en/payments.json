@@ -1,0 +1,47 @@
+{
+  "list": {
+    "title": "Payments",
+    "searchPlaceholder": "Search by address or ID...",
+    "columns": {
+      "chain": "Chain",
+      "address": "Address",
+      "expected": "Expected",
+      "received": "Received",
+      "status": "Status",
+      "created": "Created"
+    },
+    "statusOptions": {
+      "all": "All Status",
+      "pending": "Pending",
+      "confirming": "Confirming",
+      "completed": "Completed",
+      "expired": "Expired"
+    },
+    "chainOptions": {
+      "all": "All Chains",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "Payment Detail",
+    "notFound": "Payment not found",
+    "fields": {
+      "id": "ID",
+      "merchantId": "Merchant ID",
+      "chain": "Chain",
+      "token": "Token",
+      "address": "Address",
+      "expected": "Expected",
+      "received": "Received",
+      "status": "Status",
+      "confirmations": "Confirmations",
+      "txHash": "TX Hash",
+      "expires": "Expires",
+      "created": "Created",
+      "updated": "Updated"
+    }
+  }
+}

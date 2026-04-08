@@ -1,0 +1,16 @@
+{
+  "dashboard": "仪表盘",
+  "merchants": "商户管理",
+  "payments": "收款管理",
+  "payouts": "付款管理",
+  "refunds": "退款管理",
+  "batchPayouts": "批量付款",
+  "wallets": "钱包管理",
+  "balances": "余额管理",
+  "currencies": "币种管理",
+  "chainStatus": "链状态",
+  "settings": "系统设置",
+  "brand": "Octopus",
+  "adminPanel": "管理后台",
+  "version": "OctopusWallet v1.0"
+}

@@ -4,6 +4,7 @@ import {
   flexRender,
   type ColumnDef,
 } from '@tanstack/react-table'
+import { useTranslation } from 'react-i18next'
 import type { Meta } from '@/types'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
@@ -16,6 +17,7 @@ interface DataTableProps<T> {
 }
 
 export function DataTable<T>({ data, columns, meta, onPageChange, isLoading }: DataTableProps<T>) {
+  const { t } = useTranslation(['common'])
   const table = useReactTable({
     data,
     columns,
@@ -54,7 +56,7 @@ export function DataTable<T>({ data, columns, meta, onPageChange, isLoading }: D
             ) : data.length === 0 ? (
               <tr>
                 <td colSpan={columns.length} className="px-4 py-12 text-center text-muted-foreground">
-                  No data found
+                  {t('common:table.noData')}
                 </td>
               </tr>
             ) : (
@@ -75,7 +77,7 @@ export function DataTable<T>({ data, columns, meta, onPageChange, isLoading }: D
       {meta && meta.total_pages > 1 && (
         <div className="flex items-center justify-between px-4 py-3 border-t border-white/10 bg-secondary/30">
           <span className="text-xs text-muted-foreground">
-            Showing {(meta.page - 1) * meta.per_page + 1}-{Math.min(meta.page * meta.per_page, meta.total)} of {meta.total}
+            {t('common:pagination.showingRange', { from: (meta.page - 1) * meta.per_page + 1, to: Math.min(meta.page * meta.per_page, meta.total), total: meta.total })}
           </span>
           <div className="flex items-center gap-1">
             <button

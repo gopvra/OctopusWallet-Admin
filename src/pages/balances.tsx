@@ -1,14 +1,16 @@
+import { useTranslation } from 'react-i18next'
 import { useMerchantBalances } from '@/hooks/use-batch-payouts'
 import { ChainIcon } from '@/components/chain-icon'
 import { formatAmount } from '@/lib/utils'
 import { Wallet } from 'lucide-react'
 
 export default function BalancesPage() {
+  const { t } = useTranslation(['settings', 'common'])
   const { data: balances, isLoading } = useMerchantBalances()
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold">Merchant Balances</h2>
+      <h2 className="text-2xl font-bold">{t('settings:balances.title')}</h2>
 
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -19,11 +21,11 @@ export default function BalancesPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/10 bg-secondary/50">
-                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Merchant</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Chain</th>
-                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Token</th>
-                <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Available</th>
-                <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground uppercase">Pending</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">{t('settings:balances.columns.merchant')}</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">{t('settings:balances.columns.chain')}</th>
+                <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground uppercase">{t('settings:balances.columns.token')}</th>
+                <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground uppercase">{t('settings:balances.columns.available')}</th>
+                <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground uppercase">{t('settings:balances.columns.pending')}</th>
               </tr>
             </thead>
             <tbody>
@@ -31,7 +33,7 @@ export default function BalancesPage() {
                 <tr key={b.id} className="border-b border-white/5 hover:bg-white/[0.02]">
                   <td className="py-2.5 px-4 font-mono text-xs text-muted-foreground">{b.merchant_id.slice(0, 8)}...</td>
                   <td className="py-2.5 px-4"><span className="inline-flex items-center gap-1.5"><ChainIcon chain={b.chain} /><span className="capitalize">{b.chain}</span></span></td>
-                  <td className="py-2.5 px-4">{b.token || 'Native'}</td>
+                  <td className="py-2.5 px-4">{b.token || t('common:native')}</td>
                   <td className="py-2.5 px-4 text-right font-mono text-emerald-400">{formatAmount(b.available)}</td>
                   <td className="py-2.5 px-4 text-right font-mono text-amber-400">{formatAmount(b.pending)}</td>
                 </tr>
@@ -42,7 +44,7 @@ export default function BalancesPage() {
       ) : (
         <div className="rounded-xl border border-white/10 bg-card p-12 text-center">
           <Wallet className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-          <p className="text-muted-foreground">No balance data available</p>
+          <p className="text-muted-foreground">{t('settings:balances.noData')}</p>
         </div>
       )}
     </div>

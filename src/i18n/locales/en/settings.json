@@ -1,0 +1,76 @@
+{
+  "title": "Settings",
+  "account": {
+    "title": "Your Account",
+    "username": "Username",
+    "email": "Email",
+    "role": "Role"
+  },
+  "adminUsers": {
+    "title": "Admin Users",
+    "addUser": "Add User",
+    "columns": {
+      "username": "Username",
+      "email": "Email",
+      "role": "Role",
+      "created": "Created",
+      "actions": "Actions"
+    },
+    "form": {
+      "usernamePlaceholder": "Username",
+      "emailPlaceholder": "Email",
+      "passwordPlaceholder": "Password (min 12 chars)",
+      "roleAdmin": "Admin",
+      "roleSuperAdmin": "Super Admin",
+      "create": "Create",
+      "cancel": "Cancel"
+    },
+    "deleteConfirm": "Delete admin user \"{{username}}\"? This cannot be undone."
+  },
+  "wallets": {
+    "title": "Wallets",
+    "searchPlaceholder": "Search by address...",
+    "columns": {
+      "chain": "Chain",
+      "address": "Address",
+      "merchant": "Merchant",
+      "index": "Index",
+      "created": "Created"
+    },
+    "chainOptions": {
+      "all": "All Chains",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "balances": {
+    "title": "Merchant Balances",
+    "columns": {
+      "merchant": "Merchant",
+      "chain": "Chain",
+      "token": "Token",
+      "available": "Available",
+      "pending": "Pending"
+    },
+    "noData": "No balance data available"
+  },
+  "currencies": {
+    "title": "Supported Currencies",
+    "native": "Native",
+    "active": "Active",
+    "inactive": "Inactive",
+    "chain": "Chain",
+    "decimals": "Decimals",
+    "noData": "No currencies configured"
+  },
+  "chainStatus": {
+    "title": "Chain Status",
+    "syncing": "Syncing",
+    "lastBlock": "Last Block",
+    "updated": "Updated",
+    "noData": "No chain state data available",
+    "noDataHint": "Chain states will appear once the monitor starts scanning"
+  }
+}

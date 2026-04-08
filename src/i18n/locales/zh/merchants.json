@@ -1,0 +1,31 @@
+{
+  "list": {
+    "title": "商户管理",
+    "searchPlaceholder": "搜索商户...",
+    "columns": {
+      "name": "名称",
+      "email": "邮箱",
+      "status": "状态",
+      "created": "创建时间",
+      "actions": "操作"
+    },
+    "activate": "激活",
+    "deactivate": "停用"
+  },
+  "detail": {
+    "notFound": "商户不存在",
+    "info": "商户信息",
+    "details": "详细信息",
+    "fields": {
+      "id": "ID",
+      "email": "邮箱",
+      "webhookUrl": "Webhook 地址",
+      "status": "状态",
+      "lastUpdated": "最后更新",
+      "created": "创建于 {{date}}"
+    },
+    "notSet": "未设置",
+    "active": "活跃",
+    "inactive": "未激活"
+  }
+}

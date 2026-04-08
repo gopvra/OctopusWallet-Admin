@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useAuth } from '@/hooks/use-auth'
 import { Loader2 } from 'lucide-react'
 
 export default function LoginPage() {
+  const { t } = useTranslation(['auth', 'common'])
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -19,7 +21,7 @@ export default function LoginPage() {
       await login(username, password)
       navigate('/')
     } catch {
-      setError('Invalid username or password')
+      setError(t('auth:invalidCredentials'))
     } finally {
       setLoading(false)
     }
@@ -42,8 +44,8 @@ export default function LoginPage() {
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
               </svg>
             </div>
-            <h1 className="text-2xl font-bold">OctopusWallet</h1>
-            <p className="text-muted-foreground text-sm mt-1">Admin Panel</p>
+            <h1 className="text-2xl font-bold">{t('auth:title')}</h1>
+            <p className="text-muted-foreground text-sm mt-1">{t('auth:subtitle')}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -54,25 +56,25 @@ export default function LoginPage() {
             )}
 
             <div>
-              <label className="block text-sm font-medium text-muted-foreground mb-1.5">Username</label>
+              <label className="block text-sm font-medium text-muted-foreground mb-1.5">{t('auth:usernameLabel')}</label>
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                placeholder="Enter username"
+                placeholder={t('auth:usernamePlaceholder')}
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-muted-foreground mb-1.5">Password</label>
+              <label className="block text-sm font-medium text-muted-foreground mb-1.5">{t('auth:passwordLabel')}</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-white/10 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
-                placeholder="Enter password"
+                placeholder={t('auth:passwordPlaceholder')}
                 required
               />
             </div>
@@ -83,7 +85,7 @@ export default function LoginPage() {
               className="w-full py-2.5 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-all disabled:opacity-50 flex items-center justify-center gap-2"
             >
               {loading && <Loader2 className="w-4 h-4 animate-spin" />}
-              Sign In
+              {loading ? t('auth:loggingIn') : t('auth:signIn')}
             </button>
           </form>
         </div>
