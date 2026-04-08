@@ -1,6 +1,13 @@
 # OctopusWallet Admin
 
-> A modern, open-source admin dashboard for [OctopusWallet](https://github.com/gopvra/OctopusWallet) — a multi-chain cryptocurrency payment gateway.
+<p align="center">
+  <img src="public/octopus-logo.svg" alt="OctopusWallet" width="100" />
+</p>
+
+<p align="center">
+  <strong>A modern, open-source admin dashboard for <a href="https://github.com/gopvra/OctopusWallet">OctopusWallet</a></strong><br/>
+  Multi-chain cryptocurrency payment gateway management
+</p>
 
 <p align="center">
   <img src="docs/dashboard-preview.svg" alt="Dashboard Preview" width="100%" />
@@ -28,6 +35,7 @@
 - **Global ErrorBoundary** — Catches unhandled React errors with a recovery UI
 - **Password Visibility Toggle** — Show/hide password on the login page
 - **Delete Confirmation Dialogs** — Prevents accidental destructive actions
+- **WebAuthn / Passkey Login** — Fingerprint, Face ID, Windows Hello, security key authentication
 
 ## Architecture
 
@@ -161,6 +169,12 @@ Non-zero `code` values indicate errors. Each error code maps to a specific failu
 | POST | `/auth/login` | Login with username/password |
 | POST | `/auth/refresh` | Refresh JWT token |
 | GET | `/auth/me` | Get current admin user |
+| POST | `/auth/webauthn/login/begin` | Start passkey authentication |
+| POST | `/auth/webauthn/login/finish` | Complete passkey login (returns JWT) |
+| POST | `/auth/webauthn/register/begin` | Start passkey registration (authenticated) |
+| POST | `/auth/webauthn/register/finish` | Complete passkey registration |
+| GET | `/auth/webauthn/credentials` | List registered passkeys |
+| DELETE | `/auth/webauthn/credentials/:id` | Remove a passkey |
 
 ### Dashboard
 | Method | Path | Description |
@@ -264,6 +278,7 @@ src/
 - Token cleanup on authentication failure (expired, revoked, or invalid tokens are cleared automatically)
 - Refresh tokens validated with issuer check
 - Deactivated user token refresh rejection
+- WebAuthn / FIDO2 passkey authentication (fingerprint, Face ID, security keys)
 - Role-based access control (RBAC) with 3 roles: `super_admin`, `admin`, `viewer`
 - Permission-based endpoint protection on all resource routes
 - Admin self-deletion prevention
