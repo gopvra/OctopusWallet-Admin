@@ -25,7 +25,9 @@
       "create": "Create",
       "cancel": "Cancel"
     },
-    "deleteConfirm": "Delete admin user \"{{username}}\"? This cannot be undone."
+    "deleteConfirm": "Delete admin user \"{{username}}\"? This cannot be undone.",
+    "createSuccess": "Admin user created successfully",
+    "deleteSuccess": "Admin user deleted successfully"
   },
   "wallets": {
     "title": "Wallets",

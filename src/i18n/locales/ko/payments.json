@@ -1,0 +1,47 @@
+{
+  "list": {
+    "title": "결제",
+    "searchPlaceholder": "주소 또는 ID로 검색...",
+    "columns": {
+      "chain": "체인",
+      "address": "주소",
+      "expected": "예상 금액",
+      "received": "수신 금액",
+      "status": "상태",
+      "created": "생성일"
+    },
+    "statusOptions": {
+      "all": "모든 상태",
+      "pending": "대기 중",
+      "confirming": "확인 중",
+      "completed": "완료",
+      "expired": "만료"
+    },
+    "chainOptions": {
+      "all": "모든 체인",
+      "bitcoin": "비트코인",
+      "ethereum": "이더리움",
+      "tron": "트론",
+      "solana": "솔라나"
+    }
+  },
+  "detail": {
+    "title": "결제 상세",
+    "notFound": "결제 내역을 찾을 수 없습니다",
+    "fields": {
+      "id": "ID",
+      "merchantId": "가맹점 ID",
+      "chain": "체인",
+      "token": "토큰",
+      "address": "주소",
+      "expected": "예상 금액",
+      "received": "수신 금액",
+      "status": "상태",
+      "confirmations": "확인 수",
+      "txHash": "TX 해시",
+      "expires": "만료일",
+      "created": "생성일",
+      "updated": "수정일"
+    }
+  }
+}

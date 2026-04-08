@@ -1,0 +1,31 @@
+{
+  "list": {
+    "title": "加盟店",
+    "searchPlaceholder": "加盟店を検索...",
+    "columns": {
+      "name": "名前",
+      "email": "メールアドレス",
+      "status": "ステータス",
+      "created": "作成日時",
+      "actions": "操作"
+    },
+    "activate": "有効化",
+    "deactivate": "無効化"
+  },
+  "detail": {
+    "notFound": "加盟店が見つかりません",
+    "info": "加盟店情報",
+    "details": "詳細",
+    "fields": {
+      "id": "ID",
+      "email": "メールアドレス",
+      "webhookUrl": "Webhook URL",
+      "status": "ステータス",
+      "lastUpdated": "最終更新",
+      "created": "作成日: {{date}}"
+    },
+    "notSet": "未設定",
+    "active": "有効",
+    "inactive": "無効"
+  }
+}

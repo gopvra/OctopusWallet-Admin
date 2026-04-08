@@ -25,7 +25,9 @@
       "create": "创建",
       "cancel": "取消"
     },
-    "deleteConfirm": "确定删除管理员 \"{{username}}\"？此操作不可撤销。"
+    "deleteConfirm": "确定删除管理员 \"{{username}}\"？此操作不可撤销。",
+    "createSuccess": "管理员创建成功",
+    "deleteSuccess": "管理员删除成功"
   },
   "wallets": {
     "title": "钱包管理",

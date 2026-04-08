@@ -93,5 +93,6 @@
   "lastBlock": "Last Block",
   "completed": "completed",
   "payment": "payment",
-  "payout": "payout"
+  "payout": "payout",
+  "error": "An error occurred. Please try again."
 }

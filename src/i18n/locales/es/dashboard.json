@@ -1,0 +1,27 @@
+{
+  "title": "Panel de Control",
+  "stats": {
+    "totalMerchants": "Total de Comerciantes",
+    "activeMerchants": "{{count}} activos",
+    "totalPayments": "Total de Pagos",
+    "pendingPayments": "{{count}} pendientes",
+    "totalPayouts": "Total de Desembolsos",
+    "pendingPayouts": "{{count}} pendientes",
+    "totalVolume": "Volumen Total"
+  },
+  "charts": {
+    "paymentVolume": "Volumen de Pagos",
+    "chainDistribution": "Distribución por Cadena",
+    "noData": "No hay datos disponibles"
+  },
+  "recentActivity": {
+    "title": "Actividad Reciente",
+    "type": "Tipo",
+    "chain": "Cadena",
+    "amount": "Monto",
+    "status": "Estado",
+    "time": "Hora",
+    "noActivity": "Sin actividad reciente"
+  },
+  "days": "{{count}}D"
+}

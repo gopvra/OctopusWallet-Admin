@@ -1,0 +1,16 @@
+{
+  "dashboard": "ダッシュボード",
+  "merchants": "加盟店",
+  "payments": "決済",
+  "payouts": "出金",
+  "refunds": "返金",
+  "batchPayouts": "一括出金",
+  "wallets": "ウォレット",
+  "balances": "残高",
+  "currencies": "通貨",
+  "chainStatus": "チェーン状態",
+  "settings": "設定",
+  "brand": "Octopus",
+  "adminPanel": "管理パネル",
+  "version": "OctopusWallet v1.0"
+}

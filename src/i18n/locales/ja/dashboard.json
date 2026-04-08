@@ -1,0 +1,27 @@
+{
+  "title": "ダッシュボード",
+  "stats": {
+    "totalMerchants": "加盟店数",
+    "activeMerchants": "{{count}}件アクティブ",
+    "totalPayments": "決済総数",
+    "pendingPayments": "{{count}}件保留中",
+    "totalPayouts": "出金総数",
+    "pendingPayouts": "{{count}}件保留中",
+    "totalVolume": "総取引量"
+  },
+  "charts": {
+    "paymentVolume": "決済量",
+    "chainDistribution": "チェーン分布",
+    "noData": "データがありません"
+  },
+  "recentActivity": {
+    "title": "最近のアクティビティ",
+    "type": "種類",
+    "chain": "チェーン",
+    "amount": "金額",
+    "status": "ステータス",
+    "time": "時間",
+    "noActivity": "最近のアクティビティはありません"
+  },
+  "days": "{{count}}日"
+}

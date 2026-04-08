@@ -1,0 +1,27 @@
+{
+  "title": "대시보드",
+  "stats": {
+    "totalMerchants": "전체 가맹점",
+    "activeMerchants": "{{count}}개 활성",
+    "totalPayments": "전체 결제",
+    "pendingPayments": "{{count}}건 대기 중",
+    "totalPayouts": "전체 출금",
+    "pendingPayouts": "{{count}}건 대기 중",
+    "totalVolume": "총 거래량"
+  },
+  "charts": {
+    "paymentVolume": "결제 거래량",
+    "chainDistribution": "체인별 분포",
+    "noData": "데이터가 없습니다"
+  },
+  "recentActivity": {
+    "title": "최근 활동",
+    "type": "유형",
+    "chain": "체인",
+    "amount": "금액",
+    "status": "상태",
+    "time": "시간",
+    "noActivity": "최근 활동이 없습니다"
+  },
+  "days": "{{count}}일"
+}

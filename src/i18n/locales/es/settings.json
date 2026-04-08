@@ -1,0 +1,78 @@
+{
+  "title": "Configuración",
+  "account": {
+    "title": "Tu Cuenta",
+    "username": "Usuario",
+    "email": "Correo Electrónico",
+    "role": "Rol"
+  },
+  "adminUsers": {
+    "title": "Usuarios Administradores",
+    "addUser": "Agregar Usuario",
+    "columns": {
+      "username": "Usuario",
+      "email": "Correo Electrónico",
+      "role": "Rol",
+      "created": "Creado",
+      "actions": "Acciones"
+    },
+    "form": {
+      "usernamePlaceholder": "Usuario",
+      "emailPlaceholder": "Correo Electrónico",
+      "passwordPlaceholder": "Contraseña (mín. 12 caracteres)",
+      "roleAdmin": "Administrador",
+      "roleSuperAdmin": "Super Administrador",
+      "create": "Crear",
+      "cancel": "Cancelar"
+    },
+    "deleteConfirm": "¿Eliminar al usuario administrador \"{{username}}\"? Esta acción no se puede deshacer.",
+    "createSuccess": "Usuario administrador creado exitosamente",
+    "deleteSuccess": "Usuario administrador eliminado exitosamente"
+  },
+  "wallets": {
+    "title": "Billeteras",
+    "searchPlaceholder": "Buscar por dirección...",
+    "columns": {
+      "chain": "Cadena",
+      "address": "Dirección",
+      "merchant": "Comerciante",
+      "index": "Índice",
+      "created": "Creado"
+    },
+    "chainOptions": {
+      "all": "Todas las Cadenas",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "balances": {
+    "title": "Saldos de Comerciantes",
+    "columns": {
+      "merchant": "Comerciante",
+      "chain": "Cadena",
+      "token": "Token",
+      "available": "Disponible",
+      "pending": "Pendiente"
+    },
+    "noData": "No hay datos de saldo disponibles"
+  },
+  "currencies": {
+    "title": "Monedas Soportadas",
+    "native": "Nativo",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "chain": "Cadena",
+    "decimals": "Decimales",
+    "noData": "No hay monedas configuradas"
+  },
+  "chainStatus": {
+    "title": "Estado de Cadenas",
+    "syncing": "Sincronizando",
+    "lastBlock": "Último Bloque",
+    "updated": "Actualizado",
+    "noData": "No hay datos de estado de cadena disponibles",
+    "noDataHint": "Los estados de cadena aparecerán una vez que el monitor comience a escanear"
+  }
+}

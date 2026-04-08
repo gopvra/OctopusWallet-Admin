@@ -1,0 +1,89 @@
+{
+  "list": {
+    "title": "出金",
+    "searchPlaceholder": "アドレスまたはIDで検索...",
+    "columns": {
+      "chain": "チェーン",
+      "toAddress": "送金先アドレス",
+      "amount": "金額",
+      "status": "ステータス",
+      "created": "作成日時"
+    },
+    "statusOptions": {
+      "all": "すべてのステータス",
+      "pending": "保留中",
+      "processing": "処理中",
+      "completed": "完了",
+      "failed": "失敗"
+    },
+    "chainOptions": {
+      "all": "すべてのチェーン",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "出金詳細",
+    "notFound": "出金が見つかりません",
+    "fields": {
+      "id": "ID",
+      "merchantId": "加盟店ID",
+      "chain": "チェーン",
+      "token": "トークン",
+      "toAddress": "送金先アドレス",
+      "amount": "金額",
+      "status": "ステータス",
+      "txHash": "TXハッシュ",
+      "error": "エラー",
+      "created": "作成日時",
+      "updated": "更新日時"
+    }
+  },
+  "batch": {
+    "list": {
+      "title": "一括出金",
+      "columns": {
+        "chain": "チェーン",
+        "total": "合計",
+        "items": "件数",
+        "progress": "進捗",
+        "status": "ステータス",
+        "created": "作成日時"
+      },
+      "statusOptions": {
+        "all": "すべてのステータス",
+        "pending": "保留中",
+        "processing": "処理中",
+        "completed": "完了",
+        "partial": "一部完了",
+        "failed": "失敗"
+      },
+      "chainOptions": {
+        "all": "すべてのチェーン",
+        "bitcoin": "Bitcoin",
+        "ethereum": "Ethereum",
+        "tron": "Tron",
+        "solana": "Solana"
+      }
+    },
+    "detail": {
+      "title": "一括出金",
+      "notFound": "一括出金が見つかりません",
+      "chain": "チェーン",
+      "totalAmount": "合計金額",
+      "progress": "進捗",
+      "created": "作成日時",
+      "completedOf": "{{completed}}/{{total}}件完了",
+      "payoutItems": "出金項目 ({{count}}件)",
+      "columns": {
+        "toAddress": "送金先アドレス",
+        "amount": "金額",
+        "status": "ステータス",
+        "error": "エラー"
+      },
+      "noItems": "項目なし"
+    }
+  }
+}

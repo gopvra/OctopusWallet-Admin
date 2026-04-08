@@ -93,5 +93,6 @@
   "lastBlock": "最新区块",
   "completed": "已完成",
   "payment": "收款",
-  "payout": "付款"
+  "payout": "付款",
+  "error": "操作失败，请重试。"
 }

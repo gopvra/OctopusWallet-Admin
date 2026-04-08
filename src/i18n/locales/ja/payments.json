@@ -1,0 +1,47 @@
+{
+  "list": {
+    "title": "決済",
+    "searchPlaceholder": "アドレスまたはIDで検索...",
+    "columns": {
+      "chain": "チェーン",
+      "address": "アドレス",
+      "expected": "予定額",
+      "received": "受取額",
+      "status": "ステータス",
+      "created": "作成日時"
+    },
+    "statusOptions": {
+      "all": "すべてのステータス",
+      "pending": "保留中",
+      "confirming": "確認中",
+      "completed": "完了",
+      "expired": "期限切れ"
+    },
+    "chainOptions": {
+      "all": "すべてのチェーン",
+      "bitcoin": "Bitcoin",
+      "ethereum": "Ethereum",
+      "tron": "Tron",
+      "solana": "Solana"
+    }
+  },
+  "detail": {
+    "title": "決済詳細",
+    "notFound": "決済が見つかりません",
+    "fields": {
+      "id": "ID",
+      "merchantId": "加盟店ID",
+      "chain": "チェーン",
+      "token": "トークン",
+      "address": "アドレス",
+      "expected": "予定額",
+      "received": "受取額",
+      "status": "ステータス",
+      "confirmations": "承認数",
+      "txHash": "TXハッシュ",
+      "expires": "有効期限",
+      "created": "作成日時",
+      "updated": "更新日時"
+    }
+  }
+}

@@ -8,6 +8,7 @@ import { Loader2 } from 'lucide-react'
 export function AppLayout() {
   const { isAuthenticated, fetchUser } = useAuth()
   const [loading, setLoading] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -29,9 +30,9 @@ export function AppLayout() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Sidebar />
-      <div className="pl-64">
-        <Header />
+      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <div className="lg:pl-64">
+        <Header onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
         <main className="p-6">
           <Outlet />
         </main>
